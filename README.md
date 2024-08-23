@@ -1,7 +1,7 @@
 # PetPathway
 MERN Stack Project
 
-change directory to frontend
- cd frontend
- npm i
+change directory to frontend <br/>
+ cd frontend <br/>
+ npm i <br/>
  npm run dev
