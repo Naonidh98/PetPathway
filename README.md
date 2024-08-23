@@ -11,4 +11,4 @@ change directory to frontend <br/>
 
 
 ## Figma Link : 
-Open [[http://localhost:3000](https://www.figma.com/design/h76G5th2deWsYkRicFbHOM/PetPathway?node-id=0-1&t=EhrlHKh7ERfGJx9r-1)](design) 
+Open [(https://www.figma.com/design/h76G5th2deWsYkRicFbHOM/PetPathway?node-id=0-1&t=EhrlHKh7ERfGJx9r-1)]
