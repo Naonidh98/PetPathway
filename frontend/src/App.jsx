@@ -2,7 +2,7 @@ import React from "react";
 import {Route,Routes} from "react-router-dom"
 
 //importing pages
-import {Home , Login ,Register} from "./pages/index"
+import {Home , Login ,Register,Contact} from "./pages/index"
 
 const App = () => {
 
@@ -11,6 +11,7 @@ const App = () => {
       <Route path="/" element={<Home/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
+      <Route path="/contact" element={<Contact/>}/>
     </Routes>
   </div>
 
