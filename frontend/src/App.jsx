@@ -1,8 +1,8 @@
 import React from "react";
-import {Route,Routes} from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
 
 //importing pages
-import {Home , Login ,Register,Contact} from "./pages/index"
+import {Home , Login ,Register,Contact , Breeds} from "./pages/index"
 
 const App = () => {
 
@@ -12,9 +12,9 @@ const App = () => {
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path="/contact" element={<Contact/>}/>
+      <Route path="/breeds" element={<Breeds />} />
     </Routes>
   </div>
-
 };
 
 export default App;
