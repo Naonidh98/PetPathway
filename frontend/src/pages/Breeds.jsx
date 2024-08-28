@@ -1,6 +1,7 @@
 import React from "react";
-import BreedCard from "../components/BreedCard";
-import BreedData from "../assets/BreedData";
+
+import BreedData from "../components/Breeds/BreedData";
+import {BreedCard} from  "../components/index"
 
 const Breeds = () => {
   return (
