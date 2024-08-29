@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 //importing pages
-import {Home , Login ,Register,Contact , Breeds, PageNotFound} from "./pages/index"
+import {Home , Login ,Register,Contact , Breeds, PageNotFound,Store} from "./pages/index"
 
 //importing Navbar and Foooter
 import {TopBar, Footer} from "./components/index"
@@ -17,6 +17,7 @@ const App = () => {
       <Route path="/register" element={<Register/>}/>
       <Route path="/contact" element={<Contact/>}/>
       <Route path="/breeds" element={<Breeds />} />
+      <Route path="/store" element={<Store />} />
 
       <Route path="*" element={<PageNotFound/>}/>
     </Routes>

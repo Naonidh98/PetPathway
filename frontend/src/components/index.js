@@ -9,6 +9,10 @@ import BreedCard from "./Breeds/BreedCard";
 import Img from "./LazyLoadImage/Img";
 import Reviews from "./Home/Reviews";
 import Footer from "./Footer/Footer";
+import DiscountBanner from "./Store/DiscountBanner";
+import TopCategories from "./Store/TopCategories";
+import BestSellers from "./Store/BestSellers";
+
 export {
   TopBar,
   Hero,
@@ -20,5 +24,8 @@ export {
   BreedCard,
   Img,
   Reviews,
-  Footer
+  Footer,
+  DiscountBanner,
+  TopCategories,
+  BestSellers
 };
