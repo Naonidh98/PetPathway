@@ -15,7 +15,7 @@ const HeroSlider = () => {
   return (
     <Swiper
       modules={[Pagination, Navigation, Autoplay]}
-      autoplay={false}
+      autoplay={true}
       loop={true}
       pagination={{
         clickable: true,
@@ -32,13 +32,13 @@ const HeroSlider = () => {
               <div className="flex flex-col justify-evenly items-center lg:flex-row">
                 {/* text */}
                 <div className="px-2 w-[750px]">
-                  <h1 className="text-richblack-900 text-[36px] leading-tight lg:text-[72px] lg:leading-[98px] font-extrabold mb-4">
+                  <h1 className="text-white leading-normal font-poppins text-[65px] font-extrabold mb-4">
                     {title}
                   </h1>
-                  <p className="text-base lg:text-[18px] lg:leading-8 max-w-[548px] mb-8">
+                  <p className="text-xl font-roboto w-full text-left mb-8 text-white/90">
                     {subtitle}
                   </p>
-                  <button className="btn">{buttonText}</button>
+                  <button className="mt-[24px] bg-[#dc2f02] hover:scale-110 transition-all font-inter text-white px-4 py-2 rounded-xl font-[400] text-lg">{buttonText}</button>
                 </div>
 
                 {/* image */}
