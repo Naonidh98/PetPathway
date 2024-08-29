@@ -2,7 +2,7 @@ import React from "react";
 
 const BreedCard = ({ name, image }) => {
   return (
-    <div className="group relative w-[30%] aspect-square overflow-hidden rounded-xl hover:duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-pure-greys-600">
+    <div className="cursor-pointer group relative w-[30%] aspect-square overflow-hidden rounded-xl hover:duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-pure-greys-600">
       <img
         src={image}
         alt={name}

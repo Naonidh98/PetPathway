@@ -4,77 +4,59 @@ import dogImg from "../assets/loginDog.png";
 import { Link } from "react-router-dom";
 const Login = () => {
   return (
-    <div className="w-full h-full flex justify-center items-center bg-[#fbc4ab]">
-      <div className="flex  w-[94%] max-w-[1200px] h-[550px] rounded-xl shadow-xl p-4 bg-gradient-to-b from-[#fbc4ab] to-white/60">
-        {/* Right */}
-        <div className="w-1/3">
-          <img
-            src={dogImg}
-            alt="Dog img"
-            className="w-full h-full object-fit"
-          />
-        </div>
+    <div className="w-[98%] max-w-[1440px] h-full flex justify-center items-center py-[100px] px-2">
+      <div className="w-full  md:w-[65%] flex flex-col gap-4">
+        <header className="">
+          <h2 className="text-2xl font-bold p-0 mb-4 flex items-center gap-2 font-poppins">
+            Pet Pathway{" "}
+            <img src={Logo} alt="Logo" width={36} className="animate-bounce" />{" "}
+          </h2>
+          <h3 className="text-md font-inter">Log in to your account</h3>
+          <p className="text-md font-inter">Welcome Back</p>
+        </header>
 
-        {/* Left */}
-        <div className="w-2/3 flex justify-center items-center">
-          <div className="flex flex-col gap-4 w-[65%]">
-            <header className="">
-              <h2 className="text-2xl font-bold p-0 mb-4 flex items-center gap-2">
-                {" "}
-                <img
-                  src={Logo}
-                  alt="Logo"
-                  width={36}
-                  className="animate-bounce"
-                />{" "}
-                Pet Pathway
-              </h2>
-              <h3 className="text-md">Log in to your account</h3>
-              <p className="text-md">Welcome Back</p>
-            </header>
-
-            {/* Login form */}
-            <form className="flex flex-col gap-2 my-4">
-              <div className="flex flex-col gap-2">
-                <label htmlFor="" className="font-bold">
-                  Email Address :
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your email"
-                  className="shadow-xl outline-none rounded-full p-2"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label htmlFor="" className="font-bold">
-                  Password :
-                </label>
-                <input
-                  type="password"
-                  placeholder="Enter your password"
-                  className="shadow-xl outline-none rounded-full p-2"
-                />
-              </div>
-
-              {/* Forgot password */}
-              <p className="text-right text-blue-300 font-bold text-md">
-                Forgot password
-              </p>
-
-              <button className="mt-4 p-2 rounded-full bg-blue-600 text-white hover:scale-95 transition-all">
-                Login
-              </button>
-            </form>
-
-            {/* Register button */}
-            <p className="text-md text-center">
-              Don't have any account ?{" "}
-              <Link to={"/register"}>
-                <span className="text-blue-300 font-bold">Create Account</span>
-              </Link>
-            </p>
+        {/* Login form */}
+        <form className="flex flex-col gap-6 my-4">
+          <div className="flex flex-col gap-2">
+            <label htmlFor="" className="font-bold font-roboto">
+              Email Address :
+            </label>
+            <input
+              type="text"
+              placeholder="Enter your email"
+              className="shadow-white shadow-sm outline-none rounded-full py-2 px-4 bg-richblack-800"
+            />
           </div>
-        </div>
+          <div className="flex flex-col gap-2">
+            <label htmlFor="" className="font-bold font-roboto">
+              Password :
+            </label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className="shadow-white shadow-sm outline-none rounded-full py-2 px-4 bg-richblack-800"
+            />
+          </div>
+
+          {/* Forgot password */}
+          <Link to={"/forgot-password"}>
+            <p className="text-right text-blue-100 font-poppins font-bold text-md">
+              Forgot password
+            </p>
+          </Link>
+
+          <button className="w-[100px] mx-auto mt-4 py-2 px-4 rounded-md bg-deepBlue-5 text-white hover:scale-95 transition-all">
+            Login
+          </button>
+        </form>
+
+        {/* Register button */}
+        <p className="text-md text-center font-poppins">
+          Don't have any account ?{" "}
+          <Link to={"/register"}>
+            <span className="text-blue-100 font-bold">Create Account</span>
+          </Link>
+        </p>
       </div>
     </div>
   );

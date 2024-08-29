@@ -3,8 +3,8 @@ import Login from "./Login";
 import Register from "./Register";
 import Contact from "./Contact";
 import Breeds from "./Breeds";
-
-export  {Home ,Login, Register, Contact,Breeds};
+import PageNotFound from "./PageNotFound"
+export  {Home ,Login, Register, Contact,Breeds,PageNotFound};
 
 
 

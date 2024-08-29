@@ -21,30 +21,32 @@ import blog3 from "../../assets/blog3.png";
 import blog4 from "../../assets/blog4.png";
 import blog5 from "../../assets/blog5.png";
 
+import Review1 from "../../assets/Review1.png";
+
 export const heroSliderData = [
   {
     id: 1,
-    title: "We take care of your pet.",
-    image: HeroSlideImage1,
+    title: "Your New Best Friend, Just a Click Away!",
+    image: HeroSlideImage2,
     subtitle:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc odio in et, lectus sit lorem id integer.",
-    buttonText: "Get an appointment",
+      "Adoption is a big step, but it shouldn't be overwhelming. With our user-friendly tools and expert guidance, you'll have all the support you need to make an informed and compassionate decision. Let's make the adoption journey as joyful as the life you'll share with your new furry friend.",
+    buttonText: "Adopt your new friend",
   },
   {
     id: 2,
-    title: "Lorem ipsum dolor sit.",
-    image: HeroSlideImage2,
+    title: "All-In-One Care for Your Furry Friend!",
+    image: HeroSlideImage1,
     subtitle:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc odio in et, lectus sit lorem id integer.",
+      "Our platform brings together expert groomers and trusted veterinarians, ensuring your pet receives comprehensive care without the hassle of multiple appointments. From a fresh haircut to a health check, you can schedule everything with just a few clicks.",
     buttonText: "Get an appointment",
   },
   {
     id: 3,
-    title: "Nunc odio in et, lectus sit.",
+    title: "Everything Your Pet Needs, All in One Place!",
     image: HeroSlideImage3,
     subtitle:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc odio in et, lectus sit lorem id integer.",
-    buttonText: "Get an appointment",
+      "Shopping with us is easy and convenient. With detailed product descriptions, customer reviews, and expert recommendations, you'll have all the information you need to make the best choices for your pet. Plus, our fast shipping and hassle-free returns make it simple to get exactly what you need, right when you need it.",
+    buttonText: "Shop now",
   },
 ];
 
@@ -107,26 +109,93 @@ export const blogData = [
   {
     id: 1,
     image: blog1,
-    title : "are you having trouble finding the right dog ?"
+    title: "are you having trouble finding the right dog ?",
   },
   {
     id: 2,
     image: blog2,
-    title : "are you having trouble finding the right dog ?"
+    title: "are you having trouble finding the right dog ?",
   },
   {
     id: 3,
     image: blog3,
-    title : "are you having trouble finding the right dog ?"
+    title: "are you having trouble finding the right dog ?",
   },
   {
     id: 4,
     image: blog4,
-    title : "are you having trouble finding the right dog ?"
+    title: "are you having trouble finding the right dog ?",
   },
   {
     id: 5,
     image: blog5,
-    title : "are you having trouble finding the right dog ?"
+    title: "are you having trouble finding the right dog ?",
+  },
+];
+
+export const reviewData = [
+  {
+    id: 0,
+    name: "Sofia",
+    image: Review1,
+    rating: 4,
+    comment:
+      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+  },
+  {
+    id: 1,
+    name: "Sofia",
+    image: Review1,
+    rating: 5,
+    comment:
+      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+  },
+  {
+    id: 2,
+    name: "Sofia",
+    image: Review1,
+    rating: 5,
+    comment:
+      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+  },
+  {
+    id: 3,
+    name: "Sofia",
+    image: Review1,
+    rating: 4,
+    comment:
+      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+  },
+  {
+    id: 4,
+    name: "Sofia",
+    image: Review1,
+    rating: 3,
+    comment:
+      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+  },
+  {
+    id: 5,
+    name: "Sofia",
+    image: Review1,
+    rating: 4,
+    comment:
+      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+  },
+  {
+    id: 6,
+    name: "Sofia",
+    image: Review1,
+    rating: 5,
+    comment:
+      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+  },
+  {
+    id: 7,
+    name: "Sofia",
+    image: Review1,
+    rating: 4,
+    comment:
+      "Adopting and caring for my pet has never been easier—fantastic service and products!",
   },
 ];

@@ -6,6 +6,8 @@ module.exports = {
       inter: ["Inter", "sans-serif"],
       "edu-sa": ["Edu SA Beginner", "cursive"],
       mono: ["Roboto Mono", "monospace"],
+      poppins : ["Poppins", "sans-serif"],
+      roboto : ["Roboto", "sans-serif"],
     },
     colors: {
       white: "#fff",
@@ -123,6 +125,18 @@ module.exports = {
         800: "#171717",
         900: "#141414",
       },
+      deepBlue: {
+        5: "#16697A",
+        25: "#156170",
+        50: "#135967",
+        100: "#11525F",
+        200: "#104A56",
+        300: "#0E434E",
+        400: "#0D3C45",
+        500: "#0B343C",
+        600: "#092D34",
+        700: "#08252B",
+      },
     },
     screens: {
       sm: "640px",
@@ -131,9 +145,7 @@ module.exports = {
 
       lg: "1024px",
 
-      xl: "1280px",
-
-      "2xl": "1536px",
+      xl: "1440px",
     },
   },
   plugins: [],
