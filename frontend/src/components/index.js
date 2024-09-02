@@ -12,6 +12,7 @@ import Footer from "./Footer/Footer";
 import DiscountBanner from "./Store/DiscountBanner";
 import TopCategories from "./Store/TopCategories";
 import BestSellers from "./Store/BestSellers";
+import BreedDetail from "./Breeds/BreedDetail";
 
 export {
   TopBar,
@@ -27,5 +28,6 @@ export {
   Footer,
   DiscountBanner,
   TopCategories,
-  BestSellers
+  BestSellers,
+  BreedDetail
 };
