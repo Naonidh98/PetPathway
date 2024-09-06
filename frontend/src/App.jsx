@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import {Home , Login ,Register,Contact , Breeds, PageNotFound,Store} from "./pages/index"
 
 //importing Navbar and Foooter
-import {TopBar, Footer} from "./components/index"
+import {TopBar, Footer, BreedDetail} from "./components/index"
 
 const App = () => {
 
@@ -17,9 +17,9 @@ const App = () => {
       <Route path="/register" element={<Register/>}/>
       <Route path="/contact" element={<Contact/>}/>
       <Route path="/breeds" element={<Breeds />} />
+      <Route path="/breeds/:id" element={<BreedDetail />} />
       <Route path="/store" element={<Store />} />
       <Route path="/About" element={<About />} />
-
       <Route path="*" element={<PageNotFound/>}/>
     </Routes>
     <Footer/>
