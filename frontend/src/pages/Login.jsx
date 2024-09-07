@@ -1,10 +1,9 @@
 import React from "react";
 import Logo from "../assets/dogLogo.png";
-import dogImg from "../assets/loginDog.png";
 import { Link } from "react-router-dom";
 const Login = () => {
   return (
-    <div className="w-[98%] max-w-[1440px] h-full flex justify-center items-center py-[100px] px-2">
+    <div className="w-[98%] max-w-[1440px] mx-auto h-full flex justify-center items-center py-[100px] px-2">
       <div className="w-full  md:w-[65%] flex flex-col gap-4">
         <header className="">
           <h2 className="text-2xl font-bold p-0 mb-4 flex items-center gap-2 font-poppins">
