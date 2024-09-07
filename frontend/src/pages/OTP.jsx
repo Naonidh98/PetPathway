@@ -1,0 +1,49 @@
+import React from "react";
+import { useState } from "react";
+import { FaClockRotateLeft } from "react-icons/fa6";
+import OtpInput from "react-otp-input";
+
+const OTP = () => {
+  const [otp, setOtp] = useState("");
+
+  return (
+    <div className="w-[98%] max-w-[1440px] mx-auto min-h-[750px] flex justify-center items-center py-[100px] px-2">
+      <div className="w-full  md:w-[65%] flex flex-col gap-4">
+        <h2 className="text-center text-4xl font-poppins font-bold">
+          Verify your email
+        </h2>
+        <p className="text-center text-lg text-white/80 font-roboto">
+          Enter 4 digit OTP pin
+        </p>
+        <form className="w-[80%] mx-auto py-[35px] flex flex-col gap-y-6">
+          <div className="py-[25px]">
+          <OtpInput
+            value={otp}
+            onChange={setOtp}
+            numInputs={6}
+            renderSeparator={<span>-</span>}
+            inputStyle="w-[20px] text-white bg-richblack-700 rounded-[8px] border-[1px] border-richblack-500 text-[3rem] text-center"
+            focusStyle="border-[5px] border-red-500"
+            isInputNum={true}
+            shouldAutoFocus={true}
+            containerStyle="flex justify-between gap-4"
+            renderInput={(props) => <input {...props} />}
+          />
+          </div>
+
+          <div className="flex justify-between items-center">
+            <div className="cursor-pointer font-poppins text-white flex items-center gap-2 p-2">
+              <FaClockRotateLeft /> Resend
+            </div>
+
+            <button className="bg-blue-300 tex-white font-poppins px-4 py-2 rounded">
+              Verify
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default OTP;
