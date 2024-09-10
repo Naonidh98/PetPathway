@@ -1,0 +1,9 @@
+const BASE_URL = "http://localhost:8800/api/v1";
+
+export const authApi = {
+  send_otp: BASE_URL + "/auth/otp",
+  login: BASE_URL + "/auth/login",
+  signup: BASE_URL + "/auth/signup",
+  reset_password_token : BASE_URL + "/user/password-reset/token",
+  resetPassword : BASE_URL + "/user/password-reset"
+};

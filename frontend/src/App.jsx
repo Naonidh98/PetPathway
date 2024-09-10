@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 //importing pages
-import {Home , Login ,Register,Contact , Breeds, PageNotFound,Store,Groom,ForgotPassword,ResetPassword,OTP} from "./pages/index"
+import {Home , Login ,Register,Contact , Breeds, PageNotFound,Store,Groom,ForgotPassword,ResetPassword,OTP,About} from "./pages/index"
 
 //importing Navbar and Foooter
 import {TopBar, Footer, BreedDetail} from "./components/index"
@@ -16,7 +16,7 @@ const App = () => {
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path="/forgot-password" element={<ForgotPassword/>}/>
-      <Route path="/reset-password/:id" element={<ResetPassword/>}/>
+      <Route path="/reset-password/:token" element={<ResetPassword/>}/>
       <Route path="/otp/verify" element={<OTP/>}/>
       <Route path="/contact" element={<Contact/>}/>
       <Route path="/breeds" element={<Breeds />} />
