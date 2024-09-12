@@ -6,7 +6,6 @@ import Breeds from "./Breeds";
 import PageNotFound from "./PageNotFound";
 import Store from "./Store";
 import About from "./About";
-export  {Home ,Login, Register, Contact,Breeds,PageNotFound,Store,About};
+import Cart from "./Cart";
 
-
-
+export  {Home ,Login, Register, Contact, Breeds, PageNotFound, Store, About, Cart};
