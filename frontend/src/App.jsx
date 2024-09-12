@@ -2,10 +2,10 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 //importing pages
-import {Home , Login ,Register,Contact , Breeds, PageNotFound,Store} from "./pages/index"
+import {Home , Login ,Register,Contact , Breeds, PageNotFound,Store,Groom,ForgotPassword,ResetPassword,OTP,About} from "./pages/index"
 
 //importing Navbar and Foooter
-import {TopBar, Footer} from "./components/index"
+import {TopBar, Footer, BreedDetail} from "./components/index"
 
 const App = () => {
 
@@ -15,9 +15,14 @@ const App = () => {
       <Route path="/" element={<Home/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
+      <Route path="/forgot-password" element={<ForgotPassword/>}/>
+      <Route path="/reset-password/:token" element={<ResetPassword/>}/>
+      <Route path="/otp/verify" element={<OTP/>}/>
       <Route path="/contact" element={<Contact/>}/>
       <Route path="/breeds" element={<Breeds />} />
+      <Route path="/breeds/:id" element={<BreedDetail />} />
       <Route path="/store" element={<Store />} />
+      <Route path="/groom" element={<Groom />} />
       <Route path="/About" element={<About />} />
       <Route path="/Cart" element={<Cart />} />
 

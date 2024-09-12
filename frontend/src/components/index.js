@@ -12,7 +12,10 @@ import Footer from "./Footer/Footer";
 import DiscountBanner from "./Store/DiscountBanner";
 import TopCategories from "./Store/TopCategories";
 import BestSellers from "./Store/BestSellers";
-
+import BreedDetail from "./Breeds/BreedDetail";
+import Banner from "./Banner/Banner";
+import GroomBanner from "./GroomService/GroomBanner";
+import ItemSwiper from "./Swiper/ItemSwiper";
 export {
   TopBar,
   Hero,
@@ -27,5 +30,9 @@ export {
   Footer,
   DiscountBanner,
   TopCategories,
-  BestSellers
+  BestSellers,
+  BreedDetail,
+  Banner,
+  GroomBanner,
+  ItemSwiper
 };
