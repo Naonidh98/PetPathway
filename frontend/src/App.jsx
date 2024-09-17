@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-//importing pages
 import {
   Home,
   Login,
@@ -11,6 +10,11 @@ import {
   PageNotFound,
   Store,
   ItemsDetails,
+  Groom,
+  ForgotPassword,
+  ResetPassword,
+  OTP,
+  About
 } from "./pages/index";
 
 //importing Navbar and Foooter
@@ -28,12 +32,13 @@ const App = () => {
         <Route path="/breeds" element={<Breeds />} />
         <Route path="/breeds/:id" element={<BreedDetail />} />
         <Route path="/store" element={<Store />} />
-        <Route path="/store/:id" element={<ItemsDetails />} />
+        <Route path="/store/:id" element={<ItemsDetails />} />   
+        <Route path="/groom" element={<Groom />} />
+        <Route path="/About" element={<About />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </div>
   );
-};
 
 export default App;

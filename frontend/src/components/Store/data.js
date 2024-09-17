@@ -4,7 +4,11 @@ import category3Img from "../../assets/category3.png";
 import category4Img from "../../assets/category4.png";
 import category5Img from "../../assets/category5.png";
 
-const topCategoriesData = [
+import Banner1 from "../../assets/discount1.png";
+import Banner2 from "../../assets/discount2.png";
+import Banner3 from "../../assets/discount3.png";
+
+export const topCategoriesData = [
   {
     id: 0,
     title: "Dog Clothing",
@@ -37,4 +41,18 @@ const topCategoriesData = [
   },
 ];
 
-export default topCategoriesData;
+export const storeBanner = [
+  {
+    id: 0,
+    img: Banner1,
+  },
+  {
+    id: 1,
+    img: Banner2,
+  },
+  {
+    id: 2,
+    img: Banner3,
+  },
+];
+
