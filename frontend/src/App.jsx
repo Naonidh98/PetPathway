@@ -14,11 +14,12 @@ import {
   ForgotPassword,
   ResetPassword,
   OTP,
-  About
-} from "./pages/index";
+  About,
+  Blog,
+} from "./pages";
 
 //importing Navbar and Foooter
-import { TopBar, Footer, BreedDetail } from "./components/index";
+import { TopBar, Footer, BreedDetail } from "./components";
 
 const App = () => {
   return (
@@ -32,13 +33,15 @@ const App = () => {
         <Route path="/breeds" element={<Breeds />} />
         <Route path="/breeds/:id" element={<BreedDetail />} />
         <Route path="/store" element={<Store />} />
-        <Route path="/store/:id" element={<ItemsDetails />} />   
+        <Route path="/store/:id" element={<ItemsDetails />} />
         <Route path="/groom" element={<Groom />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </div>
   );
+};
 
 export default App;
