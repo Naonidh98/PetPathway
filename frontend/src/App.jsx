@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 //importing pages
-import {Home , Login ,Register,Contact , Breeds, PageNotFound,Store,Groom,ForgotPassword,ResetPassword,OTP,About} from "./pages/index"
+import {Home , Login ,Register,Contact , Breeds, PageNotFound,Store,Groom,ForgotPassword,ResetPassword,OTP,About,Cart} from "./pages/index"
 
 //importing Navbar and Foooter
 import {TopBar, Footer, BreedDetail} from "./components/index"
