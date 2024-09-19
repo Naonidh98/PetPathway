@@ -4,7 +4,6 @@ import { RiDeleteBinFill } from "react-icons/ri";
 
 
 const Cart = () => {
-
     const [quantity, setQuantity] = useState(1);
     const handleMinusQuantity = () => {
         setQuantity((quantity - 1) < 1 ? 1 : (quantity - 1));
@@ -13,10 +12,12 @@ const Cart = () => {
         setQuantity(quantity + 1);
     }
 
+    const [subtotal] = useState(500);
+
     return (
         <div className=' bg-[#161D29] h-dvh py-8 '>
             <h1 className=' flex justify-center text-4xl text-[#1FA2FF] '>Shopping Cart</h1>
-            
+
             <div className=' flex flex-col lg:flex-row  gap-16 px-[5%] py-10  '>
                 {/* left side */}
                 <div className=' w-[90%] lg:w-2/3 flex flex-col items-center justify-evenly bg-white rounded-lg  '>
@@ -54,14 +55,28 @@ const Cart = () => {
                             </button>
                         </div>
                     </div>
+                    
                 </div>
 
                 {/* right side */}
-                <div className=' w-[90%] lg:w-1/3 h-[90%] flex flex-col items-center justify-center bg-[#565ABB] rounded-lg'>
+                <div className=' w-[90%] lg:w-1/3 h-[90%] flex flex-col items-center justify-center bg-[#565ABB] rounded-lg pb-4'>
                     <div className=' text-2xl text-[#7cc8ff] pt-4 '>Order Summary</div>
                     <div className='border-b-2 border-richblack-100 w-[90%] flex justify-center mx-[5%] my-4 '></div>
-                    
-
+                    <div className=' w-full flex flex-col px-[10%] text-xl'>
+                        <div className=' flex justify-between'>
+                            <span>Subtotal</span>
+                            <span>$</span>
+                        </div>
+                        <div className=' flex justify-between'>
+                            <span>Delivery Fee</span>
+                            <div>${({ subtotal } > 499) ? <span>0</span> : <span>500</span>}</div>
+                        </div>
+                        <div className='flex justify-between'>
+                            <span>Total</span>
+                            <span>$</span>
+                        </div>
+                        <div className=' text-sm flex justify-end'>(Inclusive of all Taxes)</div>
+                    </div>
                 </div>
             </div>
         </div>
