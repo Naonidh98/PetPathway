@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+
 //importing pages
 import {
   Home,
@@ -16,6 +17,7 @@ import {
   ResetPassword,
   OTP,
   About,
+  Blog,
   Dashboard,
   Setting,
   Profile,
@@ -43,6 +45,7 @@ function Layout2({ children }) {
   }
 }
 
+
 const App = () => {
   return (
     <div className="w-screen h-full overflow-x-hidden bg-richblack-900 text-white">
@@ -64,6 +67,12 @@ const App = () => {
         <Route path="/breeds" element={<Breeds />} />
         <Route path="/breeds/:id" element={<BreedDetail />} />
         <Route path="/store" element={<Store />} />
+
+        <Route path="/store/:id" element={<ItemsDetails />} />
+        <Route path="/groom" element={<Groom />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
+
         <Route path="/About" element={<About />} />
         <Route path="/store/:id" element={<ItemsDetails />} /> 
 
@@ -84,6 +93,7 @@ const App = () => {
       <Footer />
     </div>
   );
+};
 
 };
 
