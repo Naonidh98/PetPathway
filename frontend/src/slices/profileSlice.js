@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  profile: null,
+  profile: localStorage.getItem("profile")
+    ? JSON.parse(localStorage.getItem("profile"))
+    : null,
 };
 
 const profileSlice = createSlice({
   name: "profile",
-  initialState : initialState,
+  initialState: initialState,
   reducers: {
     setProfile(state, value) {
       state.profile = value.payload;
@@ -14,5 +16,5 @@ const profileSlice = createSlice({
   },
 });
 
-export const {setProfile} = profileSlice.actions;
+export const { setProfile } = profileSlice.actions;
 export default profileSlice.reducer;

@@ -16,6 +16,7 @@ import BreedDetail from "./Breeds/BreedDetail";
 import Banner from "./Banner/Banner";
 import GroomBanner from "./GroomService/GroomBanner";
 import ItemSwiper from "./Swiper/ItemSwiper";
+import SideBar from "./Sidebar/SideBar";
 export {
   TopBar,
   Hero,
@@ -34,5 +35,6 @@ export {
   BreedDetail,
   Banner,
   GroomBanner,
-  ItemSwiper
+  ItemSwiper,
+  SideBar
 };

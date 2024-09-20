@@ -176,7 +176,7 @@ exports.login = async (req, res) => {
 
     //password valid
     if (await bcrypt.compare(password, exUser.password)) {
-      const user = await User.findOne({ email: email });
+      const user = await User.findOne({ email: email }).populate("profileId");
       user.password = null;
 
       //jwt token
