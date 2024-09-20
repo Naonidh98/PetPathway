@@ -11,7 +11,7 @@ const SimilarItems = ({ item }) => {
   }, []);
 
   return (
-    <div className="flex flex-wrap justify-center gap-3">
+    <div className="flex flex-wrap justify-center gap-3 font-poppins">
       {similarItems.map((item) => (
         <Link
           key={item.id}

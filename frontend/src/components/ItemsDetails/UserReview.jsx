@@ -5,7 +5,7 @@ import { FaStar } from "react-icons/fa";
 
 const UserReview = ({ review }) => {
   return (
-    <div className="flex py-4">
+    <div className="flex py-4 font-roboto">
       <img
         alt={review.user.name}
         className="w-10 h-10 rounded-full bg-black"

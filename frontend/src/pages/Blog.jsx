@@ -10,7 +10,7 @@ const Blog = () => {
   }, []);
 
   return (
-    <div className="mx-auto py-8 px-4 space-y-12">
+    <div className="max-w-[1440px] mx-auto py-8 px-4 space-y-12">
       <BlogInput />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {blogs.map((el, index) => (
@@ -25,6 +25,8 @@ const Blog = () => {
           />
         ))}
       </div>
+
+      {/* Todo : pagination */}
     </div>
   );
 };

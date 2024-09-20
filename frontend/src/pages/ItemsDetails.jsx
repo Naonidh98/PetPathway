@@ -20,7 +20,7 @@ const ItemsDetails = () => {
   }
 
   return (
-    <div className="bg-richblack-700">
+    <div className="bg-richblack-900 py-[50px]">
       <div className="max-w-[1440px] mx-auto">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row">
@@ -31,9 +31,9 @@ const ItemsDetails = () => {
             </div>
           </div>
 
-          <div className="bg-richblack-600 rounded-lg pt-2 p-4 mt-6">
+          <div className="bg-richblack-800 font-poppins rounded-lg pt-2 p-4 mt-6">
             <h2 className="text-2xl font-bold">Description </h2>
-            <div className=" mt-2">{item.desc}</div>
+            <div className="mt-2 font-roboto">{item.desc}</div>
           </div>
         </div>
         <ItemInformation item={item} />

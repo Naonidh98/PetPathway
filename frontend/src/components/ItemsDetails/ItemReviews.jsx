@@ -17,7 +17,7 @@ const ItemReviews = ({ item }) => {
   }, []);
 
   return (
-    <div className="mx-auto p-4">
+    <div className="mx-auto p-4 font-poppins">
       <h2 className="text-3xl text-semibold font-semibold py-4">
         Customer Reviews
       </h2>

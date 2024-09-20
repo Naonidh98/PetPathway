@@ -17,8 +17,8 @@ const ItemInfo = ({ item }) => {
 
   return (
     <>
-      <h1 className="text-2xl font-bold">{item.title}</h1>
-      <h1 className="text-md font-bold capitalize">{item.brand}</h1>
+      <h1 className="text-2xl font-bold font-roboto">{item.title}</h1>
+      <h1 className="text-md capitalize font-poppins my-1 font-semibold">{item.brand}</h1>
       <div className="flex items-center mt-2">
         <div className="flex items-center text-yellow-300 gap-[3px] text-2xl">
           {Array.from({ length: 5 }).map((_, index) => (

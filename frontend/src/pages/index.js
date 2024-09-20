@@ -16,8 +16,7 @@ import ResetPassword from "./ResetPassword";
 import Dashboard from "./Dashboard/Dashboard";
 import Profile from "./Dashboard/Profile";
 import Setting from "./Dashboard/Setting";
-import ForgotPassword from "./ForgotPassword"
-import ResetPassword from "./ResetPassword"
+
 
 export {
   Home,

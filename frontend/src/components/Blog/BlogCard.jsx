@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaHeart, FaRegHeart, FaRegStar } from "react-icons/fa";
 import { RiShare2Line } from "react-icons/ri";
+import { Img } from "../index";
 
 const BlogCard = ({ title, description, author, date, image, likes }) => {
   const [liked, setLiked] = useState(false);
@@ -10,7 +11,7 @@ const BlogCard = ({ title, description, author, date, image, likes }) => {
 
   return (
     <div className="rounded-md overflow-hidden shadow-lg bg-richblack-800">
-      <img className="w-full h-48 object-fill" src={image} alt={title} />
+      <Img src={image} className={"w-full"} />
       <div className="px-6 py-4">
         <h2 className="font-bold text-xl mb-2">{title}</h2>
         <p className="text-sm text-[gray] pb-2">Written By {author}</p>

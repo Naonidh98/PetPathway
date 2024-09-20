@@ -15,17 +15,17 @@ const Cart = () => {
     const [subtotal] = useState(500);
 
     return (
-        <div className=' bg-[#161D29] h-dvh py-8 '>
+        <div className='h-dvh py-8 font-poppins'>
             <h1 className=' flex justify-center text-4xl text-[#1FA2FF] '>Shopping Cart</h1>
 
-            <div className=' flex flex-col lg:flex-row  gap-16 px-[5%] py-10  '>
+            <div className=' flex  flex-col lg:flex-row  gap-16 px-[5%] py-10  '>
                 {/* left side */}
-                <div className=' w-[90%] lg:w-2/3 flex flex-col items-center justify-evenly bg-white rounded-lg  '>
+                <div className=' w-[90%] bg-richblack-800 lg:w-2/3 flex flex-col items-center justify-evenly  rounded-lg  '>
                     <div className=' w-[90%] flex justify-between text-2xl pt-4 '>Items</div>
 
                     <div className='border-b-2 border-richblack-100 w-[90%] flex justify-center mx-[5%] mt-4 '></div>
 
-                    <div className="  w-[90%] flex  p-4 my-4 bg-white shadow-lg rounded-lg ">
+                    <div className="  w-[90%] flex  p-4 my-4 shadow-lg rounded-lg ">
 
                         <div className="  flex items-center w-full justify-between ">
                             <div className="w-16 h-16 mr-4">image</div>
