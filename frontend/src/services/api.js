@@ -4,6 +4,10 @@ export const authApi = {
   send_otp: BASE_URL + "/auth/otp",
   login: BASE_URL + "/auth/login",
   signup: BASE_URL + "/auth/signup",
-  reset_password_token : BASE_URL + "/user/password-reset/token",
-  resetPassword : BASE_URL + "/user/password-reset"
+  reset_password_token: BASE_URL + "/user/password-reset/token",
+  resetPassword: BASE_URL + "/user/password-reset",
+};
+
+export const profileApi = {
+  update_profileImg: BASE_URL + "/profile/update/image",
 };

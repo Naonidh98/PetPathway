@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../assets/dogLogo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { login } from "../services/operations/auth";
@@ -8,6 +8,7 @@ import { useState } from "react";
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,7 +17,7 @@ const Login = () => {
 
   function submitHandler(data, event) {
     event.preventDefault();
-    dispatch(login(data, setLoading));
+    dispatch(login(data, setLoading, navigate));
   }
 
   return (

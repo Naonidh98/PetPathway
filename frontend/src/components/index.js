@@ -30,6 +30,12 @@ import SimilarItems from "./ItemsDetails/SimilarItems";
 import BlogCard from "./Blog/BlogCard";
 import BlogInput from "./Blog/BlogINput";
 
+import Banner from "./Banner/Banner";
+import GroomBanner from "./GroomService/GroomBanner";
+import ItemSwiper from "./Swiper/ItemSwiper";
+import SideBar from "./Sidebar/SideBar";
+
+
 export {
   TopBar,
   Hero,
@@ -56,5 +62,6 @@ export {
   GroomBanner,
   ItemSwiper,
   BlogInput,
-  BlogCard
+  BlogCard,
+  SideBar
 };
