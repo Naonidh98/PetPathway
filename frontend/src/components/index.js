@@ -21,11 +21,10 @@ import ItemReviews from "./ItemsDetails/ItemReviews";
 import ItemActions from "./ItemsDetails/ItemActions";
 import ItemInformation from "./ItemsDetails/ItemInformation";
 import SimilarItems from "./ItemsDetails/SimilarItems";
-
 import Banner from "./Banner/Banner";
 import GroomBanner from "./GroomService/GroomBanner";
 import ItemSwiper from "./Swiper/ItemSwiper";
-
+import SideBar from "./Sidebar/SideBar";
 
 export {
   TopBar,
@@ -51,5 +50,6 @@ export {
   SimilarItems
   Banner,
   GroomBanner,
-  ItemSwiper
+  ItemSwiper,
+  SideBar
 };
