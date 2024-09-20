@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavLinks from "./NavLinks";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../services/operations/auth";
 const TopBar = () => {
-  const navigate = useNavigate();
-
-  const [user, setUser] = useState(null);
+  const { user } = useSelector((state) => state.user);
+  const { token } = useSelector((state) => state.user);
 
   const [userNav, setUserNav] = useState("false");
 
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user) {
+      setUserNav("true");
+    } else {
+      setUserNav("false");
+    }
+  }, [user]);
 
   return (
     <div className="w-full py-4 bg-richblack-800 shadow-sm shadow-white/50">
@@ -37,7 +49,7 @@ const TopBar = () => {
 
         {/* login Sigup + dashboard btns */}
         <div className="flex items-center gap-4 font-poppins font-semibold">
-          {!user && (
+          {!token && (
             <button
               onClick={() => {
                 navigate("/login");
@@ -47,7 +59,7 @@ const TopBar = () => {
               Login
             </button>
           )}
-          {!user && (
+          {!token && (
             <button
               onClick={() => {
                 navigate("/register");
@@ -58,20 +70,20 @@ const TopBar = () => {
             </button>
           )}
 
-          {user && (
+          {token && (
             <button
               onClick={() => {
-                navigate("/dashboard");
+                navigate("/dashboard/my-profile");
               }}
               className="text-blue-50 border-2 border-blue-200 rounded-md py-2 px-4"
             >
               Dashboard
             </button>
           )}
-          {user && (
+          {token && (
             <button
               onClick={() => {
-                navigate("/");
+                dispatch(logout(navigate));
               }}
               className="bg-blue-200 text-white border-2 border-blue-200 rounded-md py-2 px-4"
             >
