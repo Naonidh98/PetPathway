@@ -4,6 +4,7 @@ import Blog from "./Blog";
 import Login from "./Login";
 import Store from "./Store";
 import About from "./About";
+import Cart from "./Cart";
 import Groom from "./Groom";
 import Breeds from "./Breeds";
 import Contact from "./Contact";
@@ -16,7 +17,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Profile from "./Dashboard/Profile";
 import Setting from "./Dashboard/Setting";
 import ForgotPassword from "./ForgotPassword"
-import ResetPassword from "./ResetPassword";
+import ResetPassword from "./ResetPassword"
 
 export {
   Home,
@@ -35,5 +36,6 @@ export {
   Profile,
   Setting,
   ItemsDetails,
-  Blog
+  Blog,
+  Cart
 };

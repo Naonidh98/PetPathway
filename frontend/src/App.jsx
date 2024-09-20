@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 //importing pages
 import {
@@ -21,11 +22,11 @@ import {
   Dashboard,
   Setting,
   Profile,
+  Cart
 } from "./pages/index";
 
 //importing Navbar and Foooter
 import { TopBar, Footer, BreedDetail } from "./components/index";
-import { useSelector } from "react-redux";
 
 //layout function  : allow route when user is logged in
 function Layout() {
@@ -36,6 +37,7 @@ function Layout() {
     return <Login />;
   }
 }
+
 function Layout2({ children }) {
   const { user, token } = useSelector((state) => state.user);
   if (user && token) {
@@ -65,6 +67,7 @@ const App = () => {
         <Route path="/otp/verify" element={<OTP />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/breeds" element={<Breeds />} />
+        <Route path="/Cart" element={<Cart />} />
         <Route path="/breeds/:id" element={<BreedDetail />} />
         <Route path="/store" element={<Store />} />
 
@@ -93,8 +96,6 @@ const App = () => {
       <Footer />
     </div>
   );
-};
-
 };
 
 export default App;
