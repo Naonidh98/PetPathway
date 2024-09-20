@@ -10,6 +10,7 @@ import {
   Breeds,
   PageNotFound,
   Store,
+  ItemsDetails,
   Groom,
   ForgotPassword,
   ResetPassword,
@@ -47,6 +48,7 @@ const App = () => {
     <div className="w-screen h-full overflow-x-hidden bg-richblack-900 text-white">
       <TopBar />
       <Routes>
+
         {/* routes accessed when user logged in */}
         <Route element={<Layout />}>
           <Route path="/groom" element={<Groom />} />
@@ -63,6 +65,7 @@ const App = () => {
         <Route path="/breeds/:id" element={<BreedDetail />} />
         <Route path="/store" element={<Store />} />
         <Route path="/About" element={<About />} />
+        <Route path="/store/:id" element={<ItemsDetails />} /> 
 
         {/* Dashboard routing */}
         <Route
@@ -81,6 +84,7 @@ const App = () => {
       <Footer />
     </div>
   );
+
 };
 
 export default App;
