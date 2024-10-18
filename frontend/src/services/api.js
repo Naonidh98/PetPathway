@@ -11,3 +11,9 @@ export const authApi = {
 export const profileApi = {
   update_profileImg: BASE_URL + "/profile/update/image",
 };
+
+export const blogsApi = {
+  create_blog: BASE_URL + "/blog/create",
+  get_blog: BASE_URL + "/blog/all",
+  get_user_blog: BASE_URL + "/blog/user/all",
+};

@@ -22,7 +22,11 @@ import {
   Dashboard,
   Setting,
   Profile,
-  Cart
+  Cart,
+  MyBlogs,
+  EditBlog,
+  CreateShop,
+  ShopForm
 } from "./pages/index";
 
 //importing Navbar and Foooter
@@ -47,16 +51,18 @@ function Layout2({ children }) {
   }
 }
 
-
 const App = () => {
   return (
     <div className="w-screen h-full overflow-x-hidden bg-richblack-900 text-white">
       <TopBar />
       <Routes>
-
         {/* routes accessed when user logged in */}
         <Route element={<Layout />}>
           <Route path="/groom" element={<Groom />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/edit/:id" element={<EditBlog />} />
+          <Route path="/dashboard/user/store/create" element={<CreateShop />} />
+          <Route path="/dashboard/user/store/create/form" element={<ShopForm />} />
         </Route>
 
         <Route path="/" element={<Home />} />
@@ -68,16 +74,15 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/breeds" element={<Breeds />} />
         <Route path="/Cart" element={<Cart />} />
-        <Route path="/breeds/:id" element={<BreedDetail />} />
+        <Route path="/breeds/:type" element={<BreedDetail />} />
         <Route path="/store" element={<Store />} />
 
         <Route path="/store/:id" element={<ItemsDetails />} />
         <Route path="/groom" element={<Groom />} />
         <Route path="/about" element={<About />} />
-        <Route path="/blog" element={<Blog />} />
 
         <Route path="/About" element={<About />} />
-        <Route path="/store/:id" element={<ItemsDetails />} /> 
+        <Route path="/store/:id" element={<ItemsDetails />} />
 
         {/* Dashboard routing */}
         <Route
@@ -89,6 +94,7 @@ const App = () => {
         >
           <Route path="/dashboard/my-profile" element={<Profile />} />
           <Route path="/dashboard/setting" element={<Setting />} />
+          <Route path="/dashboard/user/blogs" element={<MyBlogs />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />

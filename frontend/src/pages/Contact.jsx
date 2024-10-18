@@ -2,11 +2,11 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center bg-[#121721]">
+    <div className="font-poppins w-screen h-screen flex flex-col justify-center items-center bg-[#121721]">
       <h1 className="text-3xl font-bold p-0 mb-4 flex  items-center text-white gap-2">
         Contact Us
       </h1>
-      <div className="flex w-[94%] max-w-[1200px] h-[500px] rounded-xl p-4">
+      <div className="flex w-[94%] max-w-[1200px] h-[500px] rounded-xl p-4 font-roboto">
         {/* Right */}
         <div className="w-2/5 text-white">
           <div className="bg-[#161d29] p-4 rounded-xl ">
@@ -14,7 +14,7 @@ const Contact = () => {
               <h3 class="text-lg font-bold">Chat on us</h3>
             </div>
             <p>Our friendly team is here to help.</p>
-            <p>@mail address</p>
+            <p>petpathway8@mail address</p>
 
             <div class="flex items-center mt-4">
               <h3 class="text-lg font-bold">Visit us</h3>
@@ -37,10 +37,10 @@ const Contact = () => {
               <div className="flex flex-row  gap-4">
                 {/* first name input */}
                 <div className="flex flex-col mb-2">
-                  <label className="block mb-2  text-white">First Name</label>
+                  <label className="block mb-2 text-white">First Name</label>
                   <input
                     type="text"
-                    className="w-full border rounded-md px-4 py-2 "
+                    className="w-full  rounded-md px-4 py-2 bg-richblack-900 border-[1px] border-white/80"
                     placeholder="Enter your first name..."
                     required
                   />
@@ -50,7 +50,7 @@ const Contact = () => {
                   <label className="block mb-2  text-white">Last Name</label>
                   <input
                     type="text"
-                    className="w-full border rounded-md px-4 py-2"
+                    className="w-full  rounded-md px-4 py-2 bg-richblack-900 border-[1px] border-white/80"
                     placeholder="Enter your last name..."
                     required
                   />
@@ -59,8 +59,8 @@ const Contact = () => {
               {/* email input */}
               <label className="block mb-2  text-white">Email Name</label>
               <input
-                type="text"
-                className="w-[100%] outline-none rounded-md px-4 py-2 mb-2"
+                type="email"
+                className="w-[100%]  rounded-md px-4 py-2 mb-2 bg-richblack-900 border-[1px] border-white/80"
                 placeholder="Enter your email..."
                 // className="w-[100%] border bg-[#424854] border-none outline-none  rounded-md px-4 py-2 mb-2"
                 required
@@ -69,7 +69,7 @@ const Contact = () => {
               <label className="block mb-2  text-white">Phone Number</label>
               <input
                 type="text"
-                className="w-[100%] border rounded-md px-4 py-2"
+                className="w-[100%]  rounded-md px-4 py-2 bg-richblack-900 border-[1px] border-white/80"
                 placeholder="Enter your phone number..."
                 required
               />
@@ -81,8 +81,9 @@ const Contact = () => {
               </label>
               <textarea
                 id="message"
+                rows={3}
                 name="message"
-                className="w-full border rounded-md px-4 py-2 h-24"
+                className="w-full  rounded-md px-4 py-2 bg-richblack-900 border-[1px] border-white/80"
                 placeholder="Enter your message..."
                 required
               ></textarea>

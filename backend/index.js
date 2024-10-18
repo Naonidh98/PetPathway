@@ -12,6 +12,7 @@ const testRoute = require("./routes/test");
 const authRoute = require("./routes/authRoute");
 const resetPasswordRoute = require("./routes/resetPassword");
 const updateProfileRoute = require("./routes/updateProfile");
+const blogRoute = require("./routes/blogRoute");
 
 //import configuration function
 const { dbConnect } = require("./config/Database");
@@ -44,6 +45,7 @@ app.use("/api/v1", testRoute);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/user", resetPasswordRoute);
 app.use("/api/v1/profile", updateProfileRoute);
+app.use("/api/v1/blog", blogRoute);
 
 //server listen
 app.listen(PORT, () => {

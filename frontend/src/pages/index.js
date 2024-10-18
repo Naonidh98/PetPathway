@@ -16,8 +16,10 @@ import ResetPassword from "./ResetPassword";
 import Dashboard from "./Dashboard/Dashboard";
 import Profile from "./Dashboard/Profile";
 import Setting from "./Dashboard/Setting";
-
-
+import MyBlogs from "./Dashboard/MyBlogs";
+import EditBlog from "./EditBlog";
+import CreateShop from "./CreateShop";
+import ShopForm from "./ShopForm";
 export {
   Home,
   Login,
@@ -36,5 +38,9 @@ export {
   Setting,
   ItemsDetails,
   Blog,
-  Cart
+  Cart,
+  MyBlogs,
+  EditBlog,
+  CreateShop,
+  ShopForm
 };

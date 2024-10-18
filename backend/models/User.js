@@ -42,6 +42,12 @@ const userSchema = new mongoose.Schema(
     resetPasswordTokenExpires: {
       type: Date,
     },
+    myBlogs: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Blog",
+      },
+    ],
   },
   { timestamps: true }
 );
