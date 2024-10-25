@@ -26,11 +26,11 @@ import {
   MyBlogs,
   EditBlog,
   CreateShop,
-  ShopForm
+  ShopForm,
 } from "./pages/index";
 
 //importing Navbar and Foooter
-import { TopBar, Footer, BreedDetail } from "./components/index";
+import { TopBar, Footer, BreedDetail, BlogDetail } from "./components/index";
 
 //layout function  : allow route when user is logged in
 function Layout() {
@@ -60,6 +60,7 @@ const App = () => {
         <Route element={<Layout />}>
           <Route path="/groom" element={<Groom />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/blog/edit/:id" element={<EditBlog />} />
           <Route path="/dashboard/user/store/create" element={<CreateShop />} />
           <Route path="/dashboard/user/store/create/form" element={<ShopForm />} />

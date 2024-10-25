@@ -42,5 +42,5 @@ export {
   MyBlogs,
   EditBlog,
   CreateShop,
-  ShopForm
+  ShopForm,
 };

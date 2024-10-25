@@ -58,7 +58,7 @@ const Blog = () => {
               <button
                 onClick={() => {
                   dispatch(setPage(page - 1));
-                  window.scrollTo(0,0)
+                  window.scrollTo(0, 0);
                 }}
                 className="flex items-center gap-2 bg-blue-300 px-2 py-2 rounded-sm"
               >
@@ -72,7 +72,7 @@ const Blog = () => {
             <button
               onClick={() => {
                 dispatch(setPage(page + 1));
-                window.scrollTo(0,0)
+                window.scrollTo(0, 0);
               }}
               className="flex items-center gap-2 bg-blue-300 px-2 py-2 rounded-sm"
             >
