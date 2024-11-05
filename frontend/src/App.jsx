@@ -27,7 +27,6 @@ import {
   EditBlog,
   CreateShop,
   ShopForm,
-  blogDetail,
   ItemCategories,
   AddStoreItems,
   SearchStoreItem,

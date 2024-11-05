@@ -50,7 +50,6 @@ export {
   EditBlog,
   CreateShop,
   ShopForm,
-  blogDetail,
   ItemCategories,
   AddStoreItems,
   SearchStoreItem,

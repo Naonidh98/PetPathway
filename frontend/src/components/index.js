@@ -63,7 +63,6 @@ export {
   BlogInput,
   BlogCard,
   SideBar,
-  blogDetail,
   BlogDetail,
   ItemForm,
   CategoryFom
