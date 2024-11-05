@@ -5,9 +5,10 @@ const jwt = require("jsonwebtoken");
 exports.auth = async (req, res, next) => {
   try {
     //fetch token
-    const token = req.cookies.token 
-    || req.body.token 
-    || req.header("Authorisation").replace("Bearer ", "");
+    const token =
+      req.cookies.token ||
+      req.body.token ||
+      req.header("Authorisation").replace("Bearer ", "");
 
     //missing token
     if (!token) {
@@ -35,6 +36,60 @@ exports.auth = async (req, res, next) => {
       success: false,
       message: "Something went wrong",
       error: err.message,
+    });
+  }
+};
+
+//is Admin
+exports.isAdmin = async (req, res, next) => {
+  try {
+    if (req.user.type !== "Admin") {
+      return res.status(401).json({
+        success: false,
+        message: "This is a protected route for Admin only",
+      });
+    }
+    next();
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "User role cannot be verified, please try again",
+    });
+  }
+};
+
+//is User
+exports.isUser = async (req, res, next) => {
+  try {
+    if (req.user.type !== "User") {
+      return res.status(401).json({
+        success: false,
+        message: "This is a protected route for User only",
+      });
+    }
+    next();
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "User role cannot be verified, please try again",
+    });
+  }
+};
+
+//is Moderator
+exports.isModerator = async (req, res, next) => {
+  try {
+    if (req.user.type !== "Moderator") {
+      return res.status(401).json({
+        success: false,
+        message: "This is a protected route for Moderators only",
+      });
+    }
+    next();
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "User role cannot be verified, please try again",
     });
   }
 };

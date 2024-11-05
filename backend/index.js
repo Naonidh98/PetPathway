@@ -12,6 +12,8 @@ const testRoute = require("./routes/test");
 const authRoute = require("./routes/authRoute");
 const resetPasswordRoute = require("./routes/resetPassword");
 const updateProfileRoute = require("./routes/updateProfile");
+const categoryRoute = require("./routes/categoryRoute");
+const itemRoute = require("./routes/itemRoute");
 const blogRoute = require("./routes/blogRoute");
 
 //import configuration function
@@ -46,6 +48,8 @@ app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/user", resetPasswordRoute);
 app.use("/api/v1/profile", updateProfileRoute);
 app.use("/api/v1/blog", blogRoute);
+app.use("/api/v1/category", categoryRoute);
+app.use("/api/v1/item", itemRoute);
 
 //server listen
 app.listen(PORT, () => {
