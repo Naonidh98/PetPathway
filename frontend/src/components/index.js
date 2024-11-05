@@ -30,6 +30,7 @@ import ItemInformation from "./ItemsDetails/ItemInformation";
 import SimilarItems from "./ItemsDetails/SimilarItems";
 
 import BlogCard from "./Blog/BlogCard";
+import BlogDetail from "./Blog/BlogDetail";
 import BlogInput from "./Blog/BlogINput";
 
 import SideBar from "./Sidebar/SideBar";
@@ -62,6 +63,8 @@ export {
   BlogInput,
   BlogCard,
   SideBar,
+  blogDetail,
+  BlogDetail,
   ItemForm,
   CategoryFom
 };
