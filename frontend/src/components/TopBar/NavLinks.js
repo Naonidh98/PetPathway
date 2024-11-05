@@ -12,12 +12,6 @@ const NavLinks = [
       user: "false",
     },
     {
-      id: 2,
-      title: "Groom",
-      link: "/groom",
-      user: "true",
-    },
-    {
       id: 3,
       title: "Adopt",
       link: "/adopt",

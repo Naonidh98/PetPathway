@@ -19,8 +19,9 @@ exports.createItem = async (req, res) => {
       quantity = "0",
     } = req.body;
     const { dimension, origin, gtin, sku, type, returnPolicy } = req.body;
-    const thumbnail = req.body.image || null;
-
+    const thumbnail = req?.files?.image || null;
+    console.log(req.body);
+    
     //validation
     if (
       !title ||
@@ -77,7 +78,7 @@ exports.createItem = async (req, res) => {
       quantity: quantity,
       thumbnail: response.secure_url,
       category: category._id,
-      moreInfo: moreInfo._id,
+      more_info: moreInfo._id,
     });
 
     //add item to category
@@ -117,7 +118,7 @@ exports.updateItem = async (req, res) => {
       quantity,
     } = req.body;
     const { dimension, origin, gtin, sku, type, returnPolicy } = req.body;
-    const thumbnail = req.body.image || null;
+    const thumbnail = req?.files?.image || null;
 
     if (!itemId) {
       return res.status(400).json({
@@ -128,19 +129,19 @@ exports.updateItem = async (req, res) => {
 
     //validation
     if (
-      !title ||
-      !description ||
-      !brand ||
-      !price ||
-      !categoryName ||
-      !dimension ||
-      !origin ||
-      !gtin ||
-      !sku ||
-      !type ||
-      !returnPolicy ||
-      !thumbnail ||
-      !discount ||
+      !title &&
+      !description &&
+      !brand &&
+      !price &&
+      !categoryName &&
+      !dimension &&
+      !origin &&
+      !gtin &&
+      !sku &&
+      !type &&
+      !returnPolicy &&
+      !thumbnail &&
+      !discount &&
       !quantity
     ) {
       return res.status(400).json({
@@ -231,16 +232,91 @@ exports.updateItem = async (req, res) => {
   } catch (err) {
     return res.status(500).json({
       success: false,
-      message: "Failed to create item",
+      message: "Failed to update item",
       error: err.message,
     });
   }
 };
 
 //delete item
+exports.deleteItem = async (req, res) => {
+  try {
+    const { itemId } = req.body;
 
+    if (!itemId) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing requirements",
+      });
+    }
 
+    const item = await Item.findOne({ _id: itemId });
 
-//get item
+    if (!item) {
+      return res.status(500).json({
+        success: false,
+        message: "Invaid item",
+      });
+    }
 
-/*************** todo ************* */
+    await Category.findOneAndUpdate(
+      { _id: item.category },
+      {
+        $pull: {
+          items: item._id,
+        },
+      }
+    );
+
+    const deletedItem = await Item.findByIdAndDelete({ _id: itemId });
+
+    await deleteImageFromCloudinary(deletedItem.thumbnail);
+
+    return res.status(200).json({
+      success: true,
+      message: "Item Deleted Successfully",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to delete item",
+      error: err.message,
+    });
+  }
+};
+
+//get items
+
+// 1 .get item by id
+exports.getItem = async (req, res) => {
+  try {
+    const { itemId } = req.body;
+
+    if (!itemId) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing requirements",
+      });
+    }
+
+    const data  = await Item.findOne({
+      _id : itemId
+    }).populate("category").populate("more_info").exec();
+
+    return res.status(200).json({
+      success: true,
+      data : data,
+      message  : "Item Fetched"
+    })
+
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch item",
+      error: err.message,
+    });
+  }
+};
+
+// 2. get item form store page
+

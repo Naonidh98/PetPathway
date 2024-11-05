@@ -26,7 +26,14 @@ import {
   MyBlogs,
   EditBlog,
   CreateShop,
-  ShopForm
+  ShopForm,
+  ItemCategories,
+  AddStoreItems,
+  SearchStoreItem,
+  CategoryDetail,
+  StoreDashboard,
+  SearchResult,
+  AddStoreCategory
 } from "./pages/index";
 
 //importing Navbar and Foooter
@@ -76,6 +83,8 @@ const App = () => {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/breeds/:type" element={<BreedDetail />} />
         <Route path="/store" element={<Store />} />
+        <Route path="/store/categories/all" element={<ItemCategories />} />
+        <Route path="/category/detail/:id" element={<CategoryDetail />} />
 
         <Route path="/store/:id" element={<ItemsDetails />} />
         <Route path="/groom" element={<Groom />} />
@@ -83,6 +92,8 @@ const App = () => {
 
         <Route path="/About" element={<About />} />
         <Route path="/store/:id" element={<ItemsDetails />} />
+
+        <Route path="/search/:query" element={<SearchResult/>}/>
 
         {/* Dashboard routing */}
         <Route
@@ -95,6 +106,10 @@ const App = () => {
           <Route path="/dashboard/my-profile" element={<Profile />} />
           <Route path="/dashboard/setting" element={<Setting />} />
           <Route path="/dashboard/user/blogs" element={<MyBlogs />} />
+          <Route path="/dashboard/admin/additems" element={<AddStoreItems />} />
+          <Route path="/dashboard/admin/searchItem" element={<SearchStoreItem />} />
+          <Route path="/dashboard/admin/addcategory" element={<AddStoreCategory />} />
+          <Route path="/dashboard/admin/dashboard" element={<StoreDashboard />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />

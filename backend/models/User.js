@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ["Admin", "Client", "Seller"],
+      enum: ["Admin", "User", "Moderator"],
     },
     location: {
       type: String,

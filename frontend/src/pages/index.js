@@ -16,10 +16,17 @@ import ResetPassword from "./ResetPassword";
 import Dashboard from "./Dashboard/Dashboard";
 import Profile from "./Dashboard/Profile";
 import Setting from "./Dashboard/Setting";
+import AddStoreItems from "./Dashboard/AddStoreItems";
+import SearchStoreItem from "./Dashboard/SearchStoreItem";
 import MyBlogs from "./Dashboard/MyBlogs";
 import EditBlog from "./EditBlog";
 import CreateShop from "./CreateShop";
 import ShopForm from "./ShopForm";
+import ItemCategories from "./ItemCategories";
+import CategoryDetail from "./CategoryDetail";
+import StoreDashboard from "./Dashboard/StoreDashboard";
+import SearchResult from "./SearchResult";
+import AddStoreCategory from "./Dashboard/AddStoreCategory";
 export {
   Home,
   Login,
@@ -42,5 +49,12 @@ export {
   MyBlogs,
   EditBlog,
   CreateShop,
-  ShopForm
+  ShopForm,
+  ItemCategories,
+  AddStoreItems,
+  SearchStoreItem,
+  CategoryDetail,
+  StoreDashboard,
+  SearchResult,
+  AddStoreCategory
 };

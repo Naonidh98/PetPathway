@@ -16,6 +16,8 @@ import Products from "./Home/Products";
 import BestSellers from "./Store/BestSellers";
 import TopCategories from "./Store/TopCategories";
 import DiscountBanner from "./Store/DiscountBanner";
+import ItemForm from "./Store/ItemForm";
+import CategoryFom from "./Store/CategoryFom";
 
 import BreedCard from "./Breeds/BreedCard";
 import BreedDetail from "./Breeds/BreedDetail";
@@ -59,5 +61,7 @@ export {
   ItemSwiper,
   BlogInput,
   BlogCard,
-  SideBar
+  SideBar,
+  ItemForm,
+  CategoryFom
 };

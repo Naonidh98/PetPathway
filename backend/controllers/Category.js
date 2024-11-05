@@ -8,7 +8,7 @@ const {
 exports.createCategory = async (req, res) => {
   try {
     const { title, description } = req.body;
-    const image = req.files.image || null;
+    const image = req?.files?.image || null;
 
     if (!image || !title || !description) {
       return res.status(400).json({
@@ -42,7 +42,7 @@ exports.createCategory = async (req, res) => {
 exports.editCategory = async (req, res) => {
   try {
     const { categoryId, title, description } = req.body;
-    const image = req.files.image || null;
+    const image = req?.files?.image || null;
 
     if (!categoryId) {
       return res.status(400).json({

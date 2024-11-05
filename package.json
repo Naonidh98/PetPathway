@@ -5,14 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "frontend" : "cd frontend && npm run dev",
-    "backend" : "cd backend && npm run start",
-    "dev" : "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm run frontend\" \"npm run backend\""
+    "frontend": "cd frontend && npm run dev",
+    "backend": "cd backend && npm run start",
+    "dev": "concurrently -n \"client,server\" -c \"bgBlue,bgYellow\" \"npm run frontend\" \"npm run backend\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "chart.js": "^4.4.5",
+    "concurrently": "^8.2.2",
+    "react-chartjs-2": "^5.2.0"
   }
 }

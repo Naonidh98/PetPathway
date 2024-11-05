@@ -17,3 +17,7 @@ export const blogsApi = {
   get_blog: BASE_URL + "/blog/all",
   get_user_blog: BASE_URL + "/blog/user/all",
 };
+
+export const categoryApi = {
+  get_category: BASE_URL + "/category/all",
+};
