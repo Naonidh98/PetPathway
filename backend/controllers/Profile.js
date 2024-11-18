@@ -17,7 +17,7 @@ exports.updateProfile = async (req, res) => {
       contact_no = "",
     } = req.body;
 
-    const { email } = req.user;
+    const { email, _id } = req.user;
 
     if (!email) {
       return res.status(400).json({
@@ -43,16 +43,30 @@ exports.updateProfile = async (req, res) => {
       _id: user.profileId,
     });
 
-    userProfile.description = description;
-    userProfile.about = about;
-    userProfile.dob = dob;
-    userProfile.contact_no = contact_no;
+    if (description !== "") {
+      userProfile.description = description;
+    }
+
+    if (about !== "") {
+      userProfile.about = about;
+    }
+    if (dob !== "") {
+      userProfile.dob = dob;
+    }
+    if (contact_no !== "") {
+      userProfile.contact_no = contact_no;
+    }
 
     await userProfile.save();
+
+    const data = await User.findOne({ _id: _id }).populate("profileId").exec();
+
+    data.password = null;
 
     return res.status(200).json({
       success: true,
       message: "Profile updated successfully.",
+      data,
     });
   } catch (err) {
     return res.status(500).json({

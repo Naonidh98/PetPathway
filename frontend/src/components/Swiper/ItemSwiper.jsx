@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
 import Img from "../LazyLoadImage/Img";
 const ItemSwiper = ({ data, desc, title }) => {
+  console.log("Item swiper",data);
   return (
     <div className="py-[34px]">
       <h2 className="text-center text-4xl font-poppins font-bold my-4">
@@ -25,18 +26,18 @@ const ItemSwiper = ({ data, desc, title }) => {
           }}
           className="carausel-6-columns carausel-arrow-center"
         >
-          {data.map((item, index) => (
+          {data?.map((item, index) => (
             <SwiperSlide key={index}>
               <div className="p-2 rounded-lg bg-richblack-800 w-[350px] flex flex-col gap-2">
                 <Img
-                  src={item.image}
+                  src={item.image || item.thumbnail}
                   className="w-[200px] h-[200px] object-cover mx-auto"
                 />
 
-                <p className="text-xl font-bold">{item.title}</p>
-                <p className="text-sm font-inter">{item.desc}</p>
+                <p className="text-xl font-bold">{item?.title}</p>
+                <p className="text-sm font-inter">{item?.desc}</p>
 
-                <p className="my-2">{`$ ${item.price}`}</p>
+                <p className="my-2">{`Rs. ${item.price}`}</p>
 
                 <button className="bg-blue-300 text-white text-center w-full py-1">
                   Add to cart

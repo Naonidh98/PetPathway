@@ -36,7 +36,6 @@ export function updateProfileImage(file, token) {
 
       localStorage.setItem("user", JSON.stringify(response?.data?.data));
       dispatch(setUser(response?.data?.data));
-      
     } catch (error) {
       console.log("API ERROR............", error);
       toast.error(error?.response?.data?.message);
@@ -46,3 +45,38 @@ export function updateProfileImage(file, token) {
 }
 
 //update user profile
+export function updateProfileInfo(data, token, setLoading) {
+  return async (dispatch) => {
+    setLoading(true);
+    const toastId = toast.loading("Loading....");
+    try {
+      const response = await apiConnector(
+        "POST",
+        profileApi.update_profile_data,
+        data,
+        {
+          Authorisation: `Bearer ${token}`,
+        }
+      );
+
+      //response
+      console.log(response);
+
+      //failure
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+
+      localStorage.setItem("user", JSON.stringify(response?.data?.data));
+      dispatch(setUser(response?.data?.data));
+
+      //success message
+      toast.success(response.data.message);
+    } catch (error) {
+      console.log("API ERROR............", error);
+      toast.error(error?.response?.data?.message);
+    }
+    toast.dismiss(toastId);
+    setLoading(false);
+  };
+}

@@ -5,7 +5,8 @@ const blogSchema = new mongoose.Schema(
     title: {
       type: String,
       required: true,
-      maxLength: 20,
+
+      
     },
     description: {
       type: String,

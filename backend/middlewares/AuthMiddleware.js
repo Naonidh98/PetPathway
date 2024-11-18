@@ -43,7 +43,7 @@ exports.auth = async (req, res, next) => {
 //is Admin
 exports.isAdmin = async (req, res, next) => {
   try {
-    if (req.user.type !== "Admin") {
+    if (req.user.type !== "admin") {
       return res.status(401).json({
         success: false,
         message: "This is a protected route for Admin only",
@@ -61,7 +61,7 @@ exports.isAdmin = async (req, res, next) => {
 //is User
 exports.isUser = async (req, res, next) => {
   try {
-    if (req.user.type !== "User") {
+    if (req.user.type !== "user") {
       return res.status(401).json({
         success: false,
         message: "This is a protected route for User only",

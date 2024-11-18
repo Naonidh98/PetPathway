@@ -207,9 +207,9 @@ export function logout(navigate) {
       localStorage.removeItem("user");
       localStorage.removeItem("profile");
 
-      dispatch(setProfile(null))
-      dispatch(setUser(null))
-      dispatch(setToken(null))
+      dispatch(setProfile(null));
+      dispatch(setUser(null));
+      dispatch(setToken(null));
 
       //success message
       toast.success("user logout");
@@ -219,5 +219,39 @@ export function logout(navigate) {
       toast.error("Failed to logout");
     }
     toast.dismiss(toastId);
+  };
+}
+
+//reset-password
+export function updatePassword(data, token, setLoading) {
+  return async (dispatch) => {
+    setLoading(true);
+    const toastId = toast.loading("Loading....");
+    try {
+      const response = await apiConnector(
+        "POST",
+        authApi.update_password,
+        data,
+        {
+          Authorisation: `Bearer ${token}`,
+        }
+      );
+
+      //response
+      console.log(response);
+
+      //failure
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+
+      //success message
+      toast.success(response.data.message);
+    } catch (error) {
+      console.log("API ERROR............", error);
+      toast.error(error?.response?.data?.message);
+    }
+    toast.dismiss(toastId);
+    setLoading(false);
   };
 }

@@ -5,9 +5,13 @@ import moment from "moment";
 import { IoTrashBinSharp } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { LoadingTwo } from "../../components";
+import { deleteUserBlog } from "../../services/operations/blog";
 
-const MyBlogCard = ({ data, key }) => {
+const MyBlogCard = ({ data, key, setMyBlogs, setLoading }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.user);
 
   return (
     <div key={key}>
@@ -19,7 +23,7 @@ const MyBlogCard = ({ data, key }) => {
             navigate(`/blog/${data?._id}`);
           }}
         >
-          {data.title}
+          {`${data.title.substr(0, 30)}...`}
         </p>
 
         <p className="flex flex-col gap-2 justify-center">
@@ -34,8 +38,27 @@ const MyBlogCard = ({ data, key }) => {
         <div className="text-center">{`likes  : ${data?.likes.length}`}</div>
 
         <p className="cursor-pointer text-xl flex gap-[25px] items-center">
-          <MdEdit />
-          <IoTrashBinSharp />
+          <button onClick={()=>{
+            navigate(`/blog/edit/${data?._id}`);
+            window.scroll(0,0);
+          }}>
+            <MdEdit />
+          </button>
+          <button
+            onClick={() => {
+              dispatch(
+                deleteUserBlog(
+                  {
+                    blogId: data?._id,
+                  },
+                  token,
+                  setMyBlogs
+                )
+              );
+            }}
+          >
+            <IoTrashBinSharp />
+          </button>
         </p>
       </div>
     </div>
@@ -51,7 +74,6 @@ const MyBlogs = () => {
 
   useEffect(() => {
     dispatch(getUserBlogs(token, setMyBlogs, setLoading));
-    console.log(myBlogs);
   }, []);
 
   useEffect(() => {
@@ -59,7 +81,11 @@ const MyBlogs = () => {
   }, [myBlogs]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-[450px] flex items-center justify-center">
+        <LoadingTwo />
+      </div>
+    );
   }
 
   return (
@@ -76,7 +102,7 @@ const MyBlogs = () => {
             ) : (
               <div>
                 {myBlogs.map((data, index) => (
-                  <MyBlogCard data={data} key={index} />
+                  <MyBlogCard data={data} key={index} setMyBlogs={setMyBlogs} />
                 ))}
               </div>
             )}

@@ -38,17 +38,21 @@ const OTP = () => {
   return (
     <div className="w-[98%] max-w-[1440px] mx-auto min-h-[750px] flex justify-center items-center py-[100px] px-2">
       <div className="w-full  md:w-[65%] flex flex-col gap-4">
-        <h2 className="text-center text-4xl font-poppins font-bold">
+        <h2 className="text-center text-xl md:text-3xl xl:text-4xl font-poppins font-bold">
           Verify your email
         </h2>
-        <p className="text-center text-lg text-white/80 font-roboto">
-          Enter 4 digit OTP pin
+        <p className="text-center text-md lg:text-lg text-white/80 font-roboto">
+          Enter 6 digit OTP pin
         </p>
         <form
-          className="w-[80%] mx-auto py-[35px] flex flex-col gap-y-6"
+          className="w-[80%] mx-auto py-4 sm:py-[35px] flex flex-col gap-y-6"
           onSubmit={handleSubmit}
         >
-          <div className="py-[25px]">
+          <input type="text" placeholder="Enter Otp" onChange={(e)=>{
+            setOtp(e.target.value)
+          }} className="sm:hidden my-2 w-[60%] mx-auto p-2 bg-richblack-800 text-white rounded"/>
+
+          <div className="py-[25px] hidden sm:flex justify-center">
             <OtpInput
               value={otp}
               onChange={setOtp}

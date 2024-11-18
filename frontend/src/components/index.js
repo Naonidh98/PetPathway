@@ -35,6 +35,10 @@ import BlogInput from "./Blog/BlogINput";
 
 import SideBar from "./Sidebar/SideBar";
 
+import LoadingOne from  "./Spinner/LoadingOne"
+import LoadingTwo from "./Spinner/LoadingTwo";
+
+
 export {
   TopBar,
   Hero,
@@ -65,5 +69,7 @@ export {
   SideBar,
   BlogDetail,
   ItemForm,
-  CategoryFom
+  CategoryFom,
+  LoadingOne,
+  LoadingTwo
 };

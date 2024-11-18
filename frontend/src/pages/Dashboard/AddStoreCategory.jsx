@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { IoTrashBinSharp } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
 import { CategoryFom } from "../../components";
+import { IoChevronBackCircleSharp } from "react-icons/io5";
+
 const AddStoreCategory = () => {
   const [showForm, setShowForm] = useState(false);
 
@@ -30,12 +32,12 @@ const AddStoreCategory = () => {
         {showForm ? (
           <div>
             <h2
-              className="my-2"
+             className="my-2 flex items-center gap-2 cursor-pointer"
               onClick={() => {
                 setShowForm(false);
               }}
             >
-              Back
+             <IoChevronBackCircleSharp className="text-xl"/>  Back
             </h2>
             <CategoryFom />
           </div>

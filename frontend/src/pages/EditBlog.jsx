@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import JoditEditor from "jodit-react";
+import { editBlogData } from "../services/operations/blog";
 
 const EditBlog = () => {
   const params = useParams();
@@ -15,13 +16,10 @@ const EditBlog = () => {
   const [picture, setPicture] = useState(null);
   const editor = useRef(null);
   const [content, setContent] = useState("");
+  const [title, setTitle] = useState("");
+  const [loading, setLoading] = useState(false);
   const { user, token } = useSelector((state) => state.user);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const {id} = useParams();
 
   const config = {
     readonly: false, // all options from https://xdsoft.net/jodit/doc/
@@ -68,10 +66,12 @@ const EditBlog = () => {
     },
   };
 
-  const onSubmit = async (data) => {};
+  function submitHandler() {
+    dispatch(editBlogData({id : id,title : title,description : content , image : picture},token,setLoading));
+  }
 
   return (
-    <div className="w-screen h-screen bg-richblack-900 flex items-center justify-center">
+    <div className="w-screen h-screen my-[55px] bg-richblack-900 flex items-center justify-center">
       {/* edit blog form */}
 
       <div className="w-[90%] rounded-xl xl:w-[700px] h-fit p-5 flex flex-col justify-center bg-richblack-800">
@@ -86,7 +86,10 @@ const EditBlog = () => {
 
         <form
           className="py-8 flex flex-col gap-2"
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={(e) => {
+            e.preventDefault();
+            submitHandler();
+          }}
         >
           <div className="flex flex-col gap-2">
             <label className="font-poppins text-lg">Title :</label>
@@ -95,6 +98,9 @@ const EditBlog = () => {
               placeholder="Enter new title.."
               type="text"
               className="bg-richblack-900 p-2 rounded border-[1px] border-white"
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
             />
           </div>
           <div className="flex flex-col gap-2 mt-4">
@@ -132,6 +138,14 @@ const EditBlog = () => {
             </label>
           </div>
 
+          <div>
+            {picture && (
+              <p>
+                Selected file : <span>{picture?.name}</span>
+              </p>
+            )}
+          </div>
+
           {/*Form error message */}
           {errMsg?.message && (
             <span
@@ -148,7 +162,9 @@ const EditBlog = () => {
           <div className="flex justify-end">
             <button
               className={`w-fit text-lg rounded-md bg-[#065ad8] px-8 py-3 font-medium text-white outline-none`}
-            >Update</button>
+            >
+              Update
+            </button>
           </div>
         </form>
       </div>

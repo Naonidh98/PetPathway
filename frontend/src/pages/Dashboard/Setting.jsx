@@ -2,12 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfileImage } from "../../services/operations/profie";
 import { IoTrashBin } from "react-icons/io5";
+import { updatePassword } from "../../services/operations/auth";
+import { updateProfileInfo } from "../../services/operations/profie";
 
 const Setting = () => {
+  const dispatch = useDispatch();
   const { user, token } = useSelector((state) => state.user);
   const [file, setFile] = useState(null);
 
-  const dispatch = useDispatch();
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [passLoading, setPassLoading] = useState(false);
+
+  const [profileLoading, setProfileLoading] = useState(false);
+
+  const [about, setAbout] = useState("");
+  const [dob, setDob] = useState("");
+  const [contact_no, setContact_no] = useState("");
 
   return (
     <div className="mx-auto w-11/12 max-w-[1000px] font-poppins">
@@ -68,7 +80,23 @@ const Setting = () => {
             Edit Personal Info
           </h2>
 
-          <form className="flex flex-col gap-4">
+          <form
+            className="flex flex-col gap-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              dispatch(
+                updateProfileInfo(
+                  {
+                    about,
+                    dob,
+                    contact_no,
+                  },
+                  token,
+                  setProfileLoading
+                )
+              );
+            }}
+          >
             <div className="flex flex-col gap-2">
               <label htmlFor="about" className="cursor-pointer">
                 About :
@@ -78,6 +106,9 @@ const Setting = () => {
                 type="text"
                 id="about"
                 className="bg-richblack-600 rounded-sm p-2"
+                onChange={(e) => {
+                  setAbout(e.target.value);
+                }}
                 placeholder={
                   user?.profileId?.about
                     ? user?.profileId?.about
@@ -94,6 +125,9 @@ const Setting = () => {
                 <input
                   type="date"
                   id="dob"
+                  onChange={(e) => {
+                    setDob(e.target.value);
+                  }}
                   className="bg-richblack-600 rounded-sm p-2"
                   placeholder={
                     user?.profileId?.dob ? user?.profileId?.dob : "NA"
@@ -108,6 +142,9 @@ const Setting = () => {
                 <input
                   type="text"
                   id="phNo"
+                  onChange={(e) => {
+                    setContact_no(e.target.value);
+                  }}
                   className="bg-richblack-600 rounded-sm p-2"
                   placeholder={
                     user?.profileId?.contact_no
@@ -131,7 +168,23 @@ const Setting = () => {
           <h2 className="text-lg font-semibold text-richblack-5">
             Update Password
           </h2>
-          <form className="mt-8 flex flex-col gap-[28px]">
+          <form
+            className="mt-8 flex flex-col gap-[28px]"
+            onSubmit={(e) => {
+              e.preventDefault();
+              dispatch(
+                updatePassword(
+                  {
+                    newPassword: newPassword,
+                    confirmPassword: confirmPassword,
+                    oldPassword: oldPassword,
+                  },
+                  token,
+                  setPassLoading
+                )
+              );
+            }}
+          >
             <div className="flex flex-col gap-2">
               <label htmlFor="oldPass" className="cursor-pointer">
                 Old Password :
@@ -140,6 +193,9 @@ const Setting = () => {
                 type="password"
                 id="oldPass"
                 className="bg-richblack-600 rounded-sm p-2"
+                onChange={(e) => {
+                  setOldPassword(e.target.value);
+                }}
                 placeholder={"Enter your old password"}
               />
             </div>
@@ -151,6 +207,9 @@ const Setting = () => {
                 type="password"
                 id="newPass"
                 className="bg-richblack-600 rounded-sm p-2"
+                onChange={(e) => {
+                  setNewPassword(e.target.value);
+                }}
                 placeholder={"Enter your new password"}
               />
             </div>
@@ -162,14 +221,19 @@ const Setting = () => {
                 type="password"
                 id="confirmPass"
                 className="bg-richblack-600 rounded-sm p-2"
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                }}
                 placeholder={"Confirm your new password"}
               />
             </div>
 
             <div className="flex justify-end">
-              <button className="my-4 w-fit py-2 px-4 bg-yellow-50 text-black font-bold font-roboto rounded-sm">
-                Update
-              </button>
+              {!passLoading && (
+                <button className="my-4 w-fit py-2 px-4 bg-yellow-50 text-black font-bold font-roboto rounded-sm">
+                  Update
+                </button>
+              )}
             </div>
           </form>
         </div>

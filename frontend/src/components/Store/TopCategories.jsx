@@ -2,20 +2,20 @@ import React from "react";
 import { topCategoriesData } from "./data";
 import Img from "../LazyLoadImage/Img";
 import { Link } from "react-router-dom";
-const TopCategories = () => {
+const TopCategories = ({data}) => {
   return (
     <div className="py-[34px]">
       <h2 className="text-center text-4xl font-poppins font-bold my-4">
         Top Categories
       </h2>
       <div className="my-4 flex flex-wrap  gap-8">
-        {topCategoriesData.map((item, index) => (
+        {data.map((item, index) => (
           <div
             className="hover:scale-95 transition-all cursor-pointer flex flex-col gap-y-4 bg-richblack-800 rounded-md overflow-hidden"
             key={index}
           >
             <Img
-              src={item.image}
+              src={item.image || item.thumbnail}
               className="w-[250px] h-[250px] object-cover"
             />
             <p className="font-roboto text-lg font-bold p-4">{item.title}</p>

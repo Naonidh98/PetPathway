@@ -47,6 +47,16 @@ const itemSchema = new mongoose.Schema({
     ref: "Info",
     required : true
   },
+  item_type : {
+    type  : String,
+    required : true,
+    default : "Both",
+  },
+  createdAt: {
+    type : Date,
+    required : true,
+    default : Date.now
+  }
 });
 
 module.exports = mongoose.model("Item", itemSchema);

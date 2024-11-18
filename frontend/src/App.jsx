@@ -33,8 +33,13 @@ import {
   CategoryDetail,
   StoreDashboard,
   SearchResult,
-  AddStoreCategory
+  AddStoreCategory,
+  CategoryItems
 } from "./pages/index";
+
+//todo
+import Adopt from "./pages/Adopt";
+import PetForm from "./pages/PetForm";
 
 //importing Navbar and Foooter
 import { TopBar, Footer, BreedDetail, BlogDetail } from "./components/index";
@@ -69,30 +74,31 @@ const App = () => {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/blog/edit/:id" element={<EditBlog />} />
-          <Route path="/dashboard/user/store/create" element={<CreateShop />} />
-          <Route path="/dashboard/user/store/create/form" element={<ShopForm />} />
         </Route>
 
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/otp/verify" element={<OTP />} />
+
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
-        <Route path="/otp/verify" element={<OTP />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/breeds" element={<Breeds />} />
+       
         <Route path="/Cart" element={<Cart />} />
+        <Route path="/adopt" element={<Adopt/>}/>
+
         <Route path="/breeds/:type" element={<BreedDetail />} />
         <Route path="/store" element={<Store />} />
         <Route path="/store/categories/all" element={<ItemCategories />} />
         <Route path="/category/detail/:id" element={<CategoryDetail />} />
 
         <Route path="/store/:id" element={<ItemsDetails />} />
-        <Route path="/groom" element={<Groom />} />
-        <Route path="/about" element={<About />} />
-
-        <Route path="/About" element={<About />} />
+        
         <Route path="/store/:id" element={<ItemsDetails />} />
+        <Route path="/category/:name" element={<CategoryItems />} />
 
         <Route path="/search/:query" element={<SearchResult/>}/>
 
@@ -107,6 +113,7 @@ const App = () => {
           <Route path="/dashboard/my-profile" element={<Profile />} />
           <Route path="/dashboard/setting" element={<Setting />} />
           <Route path="/dashboard/user/blogs" element={<MyBlogs />} />
+          <Route path="/dashboard/user/pets" element={<PetForm />} />
           <Route path="/dashboard/admin/additems" element={<AddStoreItems />} />
           <Route path="/dashboard/admin/searchItem" element={<SearchStoreItem />} />
           <Route path="/dashboard/admin/addcategory" element={<AddStoreCategory />} />

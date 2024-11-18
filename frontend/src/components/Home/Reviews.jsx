@@ -7,7 +7,7 @@ import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
 
 const Reviews = () => {
   return (
-    <div className="py-[34px]">
+    <div className="hidden xl:block py-[34px]">
       <div className="mb-[25px]">
         <h2 className="text-center text-4xl font-bold">
           What Our Clients Say :
@@ -21,7 +21,7 @@ const Reviews = () => {
       </div>
 
       {/* Client review Slider */}
-      <div className="py-[100px]">
+      <div className="py-[25px] md:py-[50px] lg:py-[100px]">
       <Swiper
         modules={[Autoplay]}
         autoplay={true}

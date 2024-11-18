@@ -16,7 +16,7 @@ const ReviewCard = ({ data, index }) => {
         <IoStarSharp className={`${(5 <= data.rating) ? "text-yellow-50" : ""}`}/>
       </div>
 
-      <div className="text-md font-roboto">{data.comment}</div>
+      <div className="text-sm md:text-md font-roboto">{data.comment}</div>
 
       <div className="flex items-center gap-4 mt-4">
         <img

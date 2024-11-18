@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import { FaGear } from "react-icons/fa6";
 import { IoLogOut } from "react-icons/io5";
 
-const SideBar = () => {
+
+const SideBar = ({setShowModal}) => {
   return (
     <div
-      className="hidden min-w-[150px] flex-col border-r-[1px] border-r-richblack-700 lg:flex
+      className="hidden min-w-[150px] flex-col border-r-[1px] border-r-richblack-700 md:flex
         h-[calc[100vh-3.5rem)] bg-richblack-800 py-10 px-2"
     >
       {SideBarLinks.map((data, index) => (
@@ -33,13 +34,13 @@ const SideBar = () => {
             </div>
             <div>Settings</div>
           </div>
-          <div className="text-white flex gap-2 items-center py-4">
-            <div>
-              <IoLogOut className="md:text-lg text-3xl" />
-            </div>
-            <div>Logout</div>
-          </div>
         </Link>
+        <div onClick={()=>{setShowModal(true)}} className="text-white flex gap-2 items-center py-4 cursor-pointer">
+          <div>
+            <IoLogOut className="md:text-lg text-3xl" />
+          </div>
+          <div>Logout</div>
+        </div>
       </div>
     </div>
   );

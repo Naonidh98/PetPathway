@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Images
 
@@ -32,20 +32,16 @@ export const FooterLink2 = [
   {
     title: "Languages",
     links: [
-      { title: "Bash", link: "/bash" },
-      { title: "C++", link: "/c++" },
-      { title: "C#", link: "/csharp" },
-      { title: "Go", link: "/go" },
-      { title: "HTML & CSS", link: "/html-css" },
-      { title: "Java", link: "/java" },
-      { title: "JavaScript", link: "/javascript" },
-      { title: "Kotlin", link: "/kotlin" },
-      { title: "PHP", link: "/php" },
-      { title: "Python", link: "/python" },
-      { title: "R", link: "/r" },
-      { title: "Ruby", link: "/ruby" },
-      { title: "SQL", link: "/sql" },
-      { title: "Swift", link: "/swift" },
+      { title: "English", link: "/" },
+      { title: "Español", link: "/" }, // Spanish for English
+      { title: "Français", link: "/" }, // French for English
+      { title: "Deutsch", link: "/" }, // German for English
+      { title: "Русский", link: "/" }, // Russian for English
+      { title: "中文", link: "/" }, // Chinese for English
+      { title: "日本語", link: "/" }, // Japanese for English
+      { title: "हिंदी", link: "/" }, // Hindi for English
+      { title: "العربية", link: "/" }, // Arabic for English
+      { title: "Português", link: "/" }, // Portuguese for English
     ],
   },
   {
@@ -80,6 +76,8 @@ const Plans = ["Paid memberships", "For students", "Business solutions"];
 const Community = ["Forums", "Chapters", "Events"];
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-richblack-800">
       <div className="flex lg:flex-row gap-8 items-center justify-between w-11/12 max-w-maxContent text-richblack-400 leading-6 mx-auto relative py-14">
@@ -89,16 +87,16 @@ const Footer = () => {
             <div className="w-[30%] flex flex-col gap-3 lg:w-[30%] mb-7 lg:pl-0">
               <img src={""} alt="" className="object-contain" />
               <h1 className="text-richblack-50 font-semibold text-[16px]">
-                Company
+                PetPathway | Pet-Care
               </h1>
               <div className="flex flex-col gap-2">
-                {["About", "Careers", "Affiliates"].map((ele, i) => {
+                {["Careers", "Affiliates"].map((ele, i) => {
                   return (
                     <div
                       key={i}
                       className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200"
                     >
-                      <Link to={ele.toLowerCase()}>{ele}</Link>
+                      <Link to={"/"}>{ele}</Link>
                     </div>
                   );
                 })}
@@ -136,7 +134,14 @@ const Footer = () => {
                 Support
               </h1>
               <div className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200 mt-2">
-                <Link to={"/help-center"}>Help Center</Link>
+                <button
+                  onClick={() => {
+                    navigate("/contact");
+                    window.scroll(0, 0);
+                  }}
+                >
+                  Help Center
+                </button>
               </div>
             </div>
 
@@ -229,9 +234,7 @@ const Footer = () => {
             })}
           </div>
 
-          <div className="text-center">
-            Made by ❤️ | © 2024 PetPathway
-          </div>
+          <div className="text-center">Made by ❤️ | © 2024 PetPathway</div>
         </div>
       </div>
     </div>

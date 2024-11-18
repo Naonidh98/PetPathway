@@ -62,7 +62,7 @@ const Profile = () => {
           </div>
           <p className="text-richblack-400 text-sm font-medium">
             {" "}
-            {user?.additionalDetails?.about ?? "Write Something about Yourself"}
+            {user?.profileId?.about ?? "Write Something about Yourself"}
           </p>
         </div>
 
@@ -100,7 +100,7 @@ const Profile = () => {
               <div>
                 <p className="mb-2 text-sm text-richblack-100">Gender</p>
                 <p className="text-sm font-medium text-richblack-5">
-                  {user?.additionalDetails?.gender ?? "Add Gender"}
+                  {user?.profileId?.gender ?? "NA"}
                 </p>
               </div>
             </div>
@@ -115,14 +115,13 @@ const Profile = () => {
               <div>
                 <p className="mb-2 text-sm text-richblack-100">Phone Number</p>
                 <p className="text-sm font-medium text-richblack-5">
-                  {user?.additionalDetails?.contactNumber ??
-                    "Add Contact Number"}
+                  {user?.profileId?.contact_no ?? "NA"}
                 </p>
               </div>
               <div>
                 <p className="mb-2 text-sm text-richblack-100">Date of Birth</p>
                 <p className="text-sm font-medium text-richblack-5">
-                  {user?.additionalDetails?.dateOfBirth ?? "Add Date of Birth"}
+                  {user?.profileId?.dob ?? "NA"}
                 </p>
               </div>
             </div>

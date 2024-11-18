@@ -88,13 +88,14 @@ const BlogInput = () => {
 
   return (
     <div className="flex justify-between">
-      <div className="font-poppins h-[100%] w-[30%] bg-richblack-800 rounded-lg p-2">
+      <div className="hidden lg:flex flex-col font-poppins h-full w-[30%] bg-richblack-800 rounded-lg p-2">
         <p className="p-2">
           {`UserName  : ${user?.firstName} ${user?.lastName}`}
         </p>
         <p className="p-2">{`email  : ${user?.email}`}</p>
+        {/*
         <p className="p-2">{`Total Blogs  : ${user?.myBlogs.length || 0}`}</p>
-        <p className="p-2">{`Total likes  :`}</p>
+        <p className="p-2">{`Total likes  :`}</p> */}
       </div>
       <form
         onSubmit={handleSubmit(submitHandler)}
@@ -102,7 +103,7 @@ const BlogInput = () => {
           setIsFocused(false);
           setFile(null);
         }}
-        className="rounded-lg w-[68%] bg-richblack-800 p-2 sm:p-4"
+        className="rounded-lg w-full lg:w-[68%] bg-richblack-800 p-2 sm:p-4"
       >
         <div className="flex items-center gap-3 mb-2">
           <img

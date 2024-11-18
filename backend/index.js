@@ -15,6 +15,8 @@ const updateProfileRoute = require("./routes/updateProfile");
 const categoryRoute = require("./routes/categoryRoute");
 const itemRoute = require("./routes/itemRoute");
 const blogRoute = require("./routes/blogRoute");
+const storeRoute = require("./routes/storeRoute");
+const petRoute = require("./routes/petRoute");
 
 //import configuration function
 const { dbConnect } = require("./config/Database");
@@ -50,6 +52,8 @@ app.use("/api/v1/profile", updateProfileRoute);
 app.use("/api/v1/blog", blogRoute);
 app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/item", itemRoute);
+app.use("/api/v1/store", storeRoute);
+app.use("/api/v1/pet", petRoute);
 
 //server listen
 app.listen(PORT, () => {

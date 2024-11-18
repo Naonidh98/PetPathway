@@ -21,7 +21,7 @@ exports.createItem = async (req, res) => {
     const { dimension, origin, gtin, sku, type, returnPolicy } = req.body;
     const thumbnail = req?.files?.image || null;
     console.log(req.body);
-    
+
     //validation
     if (
       !title ||
@@ -79,6 +79,7 @@ exports.createItem = async (req, res) => {
       thumbnail: response.secure_url,
       category: category._id,
       more_info: moreInfo._id,
+      item_type : type
     });
 
     //add item to category
@@ -299,16 +300,18 @@ exports.getItem = async (req, res) => {
       });
     }
 
-    const data  = await Item.findOne({
-      _id : itemId
-    }).populate("category").populate("more_info").exec();
+    const data = await Item.findOne({
+      _id: itemId,
+    })
+      .populate("category")
+      .populate("more_info")
+      .exec();
 
     return res.status(200).json({
       success: true,
-      data : data,
-      message  : "Item Fetched"
-    })
-
+      data: data,
+      message: "Item Fetched",
+    });
   } catch (err) {
     return res.status(500).json({
       success: false,
@@ -319,4 +322,61 @@ exports.getItem = async (req, res) => {
 };
 
 // 2. get item form store page
+exports.getItemForStore = async (req, res) => {
+  try {
+    const data1 = await Item.find(
+      { type: "dog" },
+      {
+        title: true,
+        description: true,
+        price: true,
+        thumbnail: true,
+      }
+    )
+      .limit(8)
+      .exec();
 
+    const data2 = await Item.find(
+      { type: "cat" },
+      {
+        title: true,
+        description: true,
+        price: true,
+        thumbnail: true,
+      }
+    )
+      .limit(8)
+      .exec();
+
+    const data3 = await Item.find(
+      {},
+      {
+        title: true,
+        description: true,
+        price: true,
+        thumbnail: true,
+      }
+    )
+      .sort({ createdAt: -1 })
+      .limit(8)
+      .exec();
+
+    const data = {
+      forDogs: data1,
+      forCats: data2,
+      latestItem: data3,
+    };
+
+    return res.status(200).json({
+      success: true,
+      data: data,
+      message: "Item Fetched for store",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch item",
+      error: err.message,
+    });
+  }
+};

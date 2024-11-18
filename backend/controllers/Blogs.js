@@ -325,7 +325,40 @@ exports.getUserBlogs = async (req, res) => {
       });
     }
 
-    const data = await Blog.find({ author: userId}).select("title createdAt updatedAt likes").sort("-createdAt").exec();
+    const data = await Blog.find({ author: userId })
+      .select("title createdAt updatedAt likes")
+      .sort("-createdAt")
+      .exec();
+
+    return res.status(200).json({
+      success: true,
+      message: "Blogs fetched successfully",
+      data: data,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch Blog.",
+      error: err.message,
+    });
+  }
+};
+
+//get blog by id
+exports.getBlogDetails = async (req, res) => {
+  try {
+    const { blogId } = req.body;
+
+    if (!blogId) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing requirements",
+      });
+    }
+
+    const data = await Blog.findOne({ _id: blogId })
+      .populate("author", "firstName lastName")
+      .exec();
 
     return res.status(200).json({
       success: true,

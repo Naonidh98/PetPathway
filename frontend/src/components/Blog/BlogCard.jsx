@@ -15,7 +15,7 @@ const BlogCard = ({ data }) => {
 
   return (
     <div>
-      <div className="rounded-md overflow-hidden shadow-lg bg-richblack-800">
+      <div className="rounded-md overflow-hidden shadow-lg bg-richblack-800 h-full">
         <img src={data?.image} className={"w-full"} loading="lazy" />
         <div className="px-6 py-4">
           <h2 className="font-bold text-xl mb-2">{data?.title}</h2>

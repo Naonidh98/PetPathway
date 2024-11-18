@@ -61,8 +61,14 @@ const bestSellerData = [
   },
 ];
 
-const BestSellers = () => {
-  return <ItemSwiper data={bestSellerData} desc={'description'} title={'Best seller'}/>
+const BestSellers = ({ data }) => {
+  return (
+    <ItemSwiper
+      data={data}
+      desc={"description"}
+      title={"Newly added"}
+    />
+  );
 };
 
 export default BestSellers;

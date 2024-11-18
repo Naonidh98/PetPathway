@@ -27,6 +27,7 @@ import CategoryDetail from "./CategoryDetail";
 import StoreDashboard from "./Dashboard/StoreDashboard";
 import SearchResult from "./SearchResult";
 import AddStoreCategory from "./Dashboard/AddStoreCategory";
+import CategoryItems from "./CategoryItems"
 export {
   Home,
   Login,
@@ -56,5 +57,6 @@ export {
   CategoryDetail,
   StoreDashboard,
   SearchResult,
-  AddStoreCategory
+  AddStoreCategory,
+  CategoryItems
 };

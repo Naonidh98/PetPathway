@@ -31,14 +31,16 @@ export const heroSliderData = [
     subtitle:
       "Adoption is a big step, but it shouldn't be overwhelming. With our user-friendly tools and expert guidance, you'll have all the support you need to make an informed and compassionate decision. Let's make the adoption journey as joyful as the life you'll share with your new furry friend.",
     buttonText: "Adopt your new friend",
+    link: "/adopt",
   },
   {
     id: 2,
     title: "All-In-One Care for Your Furry Friend!",
     image: HeroSlideImage1,
     subtitle:
-      "Our platform brings together expert groomers and trusted veterinarians, ensuring your pet receives comprehensive care without the hassle of multiple appointments. From a fresh haircut to a health check, you can schedule everything with just a few clicks.",
-    buttonText: "Get an appointment",
+      "Read and write blogs about pet care to share tips, learn new insights, and help others take better care of their furry friends.",
+    buttonText: "Start writing a blog",
+    link: "/blog",
   },
   {
     id: 3,
@@ -47,6 +49,7 @@ export const heroSliderData = [
     subtitle:
       "Shopping with us is easy and convenient. With detailed product descriptions, customer reviews, and expert recommendations, you'll have all the information you need to make the best choices for your pet. Plus, our fast shipping and hassle-free returns make it simple to get exactly what you need, right when you need it.",
     buttonText: "Shop now",
+    link: "/store",
   },
 ];
 
@@ -114,88 +117,98 @@ export const blogData = [
   {
     id: 2,
     image: blog2,
-    title: "are you having trouble finding the right dog ?",
+    title: "Having trouble finding the best pet care?",
   },
   {
     id: 3,
     image: blog3,
-    title: "are you having trouble finding the right dog ?",
+    title: "What are the best activities to keep your pet healthy and active?",
   },
+
   {
     id: 4,
-    image: blog4,
-    title: "are you having trouble finding the right dog ?",
-  },
-  {
-    id: 5,
     image: blog5,
-    title: "are you having trouble finding the right dog ?",
+    title: "Having trouble finding the right pet food?",
   },
 ];
 
 export const reviewData = [
   {
     id: 0,
-    name: "Sofia",
-    image: Review1,
+    name: "John Doe",
+    image:
+      "https://www.topmediai.com/micro/passport-photo-maker/assets/bigger_pic1-9eb61f77.png",
     rating: 4,
     comment:
       "Adopting and caring for my pet has never been easier—fantastic service and products!",
   },
   {
     id: 1,
-    name: "Sofia",
-    image: Review1,
+    name: "Sofia Lee",
+    image:
+      "https://www.topmediai.com/micro/passport-photo-maker/assets/bigger_pic2-69047725.png",
     rating: 5,
     comment:
-      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+      "Great selection of pet products and helpful blogs. A must-visit for pet care!",
   },
   {
     id: 2,
-    name: "Sofia",
-    image: Review1,
+    name: "Mia luna",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-e73lHSywvwHbtQulEd1uIwl40tbvVkJwjQ&s",
+
     rating: 5,
     comment:
-      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+      "Loved the adoption process on PetPathway. Simple, fast, and reliable!",
   },
   {
     id: 3,
-    name: "Sofia",
-    image: Review1,
+    name: "Ravi k.",
+    image:
+      "https://passport-photo.online/images/cms/prepare_lookintothecamera_860144524c.webp?quality=80&format=webp&width=1920",
+
     rating: 4,
     comment:
-      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+      "Fantastic platform for both pet adoption and shopping. Couldn't be happier!",
   },
   {
     id: 4,
-    name: "Sofia",
-    image: Review1,
+    name: "Babar",
+    image:
+      "https://i.cdn.newsbytesapp.com/sports/players/profile/babar-azam-1.png",
+
     rating: 3,
     comment:
-      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+      "Amazing experience! The pet care blogs are super informative and helpful.",
   },
   {
     id: 5,
-    name: "Sofia",
-    image: Review1,
+    name: "Kane",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNiPa5dtC-gPx9hc4QcaDkkiMgQw6pg-uF-A&s",
+
     rating: 4,
     comment:
-      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+      "PetPathway is my go-to site for pet care advice and products. Highly recommend!",
   },
   {
     id: 6,
-    name: "Sofia",
-    image: Review1,
+    name: "Ben",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2TFB4QDoU4w-sj4M6zOdako17roc4sUmTfw&s",
+
     rating: 5,
-    comment:
-      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+    comment: "Great resources and products all in one place!",
   },
   {
     id: 7,
     name: "Sofia",
-    image: Review1,
+    name: "Deku",
+    image:
+      "https://pbs.twimg.com/profile_images/1284155869060571136/UpanAYid_400x400.jpg",
+
     rating: 4,
     comment:
-      "Adopting and caring for my pet has never been easier—fantastic service and products!",
+      "Easy to navigate and full of useful information. Perfect for any pet owner!",
   },
 ];

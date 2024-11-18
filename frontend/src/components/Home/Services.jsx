@@ -1,7 +1,8 @@
 import React from "react";
 import { MdOutlinePets } from "react-icons/md";
 import { IoStorefrontSharp } from "react-icons/io5";
-import { FaUserDoctor } from "react-icons/fa6";
+import { FaBloggerB } from "react-icons/fa";
+
 
 const Services = () => {
   return (
@@ -17,7 +18,7 @@ const Services = () => {
                 What We Offer
               </h2>
               <p className="text-base text-body-color dark:text-dark-6">
-                Adoption, grooming, vet care, and top pet products—all in one
+                Adoption, blogging, and top pet products—all in one
                 place. Your pet’s happiness, simplified.
               </p>
             </div>
@@ -36,9 +37,9 @@ const Services = () => {
             icon={<IoStorefrontSharp className="text-4xl" />}
           />
           <ServiceCard
-            title="Health Care"
-            details="Access top-notch grooming and veterinary care with our integrated clinic services. Schedule appointments for all your pet’s needs—from health check-ups to stylish makeovers—seamlessly in one place."
-            icon={<FaUserDoctor className="text-4xl" />}
+            title="Blogs"
+            details="Our blog covers everything from routine health check-ups to grooming advice, helping you provide the best care for your furry friend. Learn about the latest pet health trends."
+            icon={<FaBloggerB className="text-4xl" />}
           />
         </div>
       </div>
@@ -51,15 +52,15 @@ export default Services;
 const ServiceCard = ({ icon, title, details }) => {
   return (
     <>
-      <div className="w-full px-4 md:w-1/2 lg:w-1/3">
-        <div className="mb-9 rounded-[20px] bg-richblack-800  p-10 shadow-2 hover:shadow-lg dark:bg-dark-2 md:px-7 xl:px-10">
+      <div className="w-[98%] mx-auto px-4 md:w-1/2 lg:w-1/3">
+        <div className="mb-9 rounded-[20px] bg-richblack-800 p-5 md:p-10 shadow-2 hover:shadow-lg dark:bg-dark-2 md:px-7 xl:px-10">
           <div className="mx-auto mb-8 flex h-[70px] w-[70px] items-center justify-center rounded-2xl bg-primary">
             {icon}
           </div>
           <h4 className="mb-[14px] text-2xl font-semibold text-dark text-center">
             {title}
           </h4>
-          <p className="text-body-color dark:text-dark-6 text-center">
+          <p className="text-sm sm:text-lg text-body-color dark:text-dark-6 text-center">
             {details}
           </p>
         </div>

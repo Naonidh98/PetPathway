@@ -1,14 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-const { auth } = require("../middlewares/AuthMiddleware");
+const { auth, isUser } = require("../middlewares/AuthMiddleware");
 const {
   createBlog,
   editBlog,
   deleteBlog,
   likeBlog,
   getBlogs,
-  getUserBlogs
+  getUserBlogs,
+  getBlogDetails,
 } = require("../controllers/Blogs");
 
 //create blog
@@ -28,5 +29,8 @@ router.post("/all", auth, getBlogs);
 
 //get user's blogs
 router.get("/user/all", auth, getUserBlogs);
+
+//get blog by id
+router.post("/detail", auth, isUser, getBlogDetails);
 
 module.exports = router;

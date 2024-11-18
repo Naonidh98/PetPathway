@@ -6,23 +6,26 @@ const Blog = () => {
     <div className="py-[34px]">
       {/* Top */}
       <div className="text-center">
-        <h2 className="font-bold text-4xl font-poppins">Blogs</h2>
-        <p className="text-lg font-roboto my-4">
-          All producta are disgned for ease and durable you sndmsd nsmndsd snmsd
-          sdns dsdnsd
+        <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl font-poppins">
+          Blogs
+        </h2>
+        <p className="text-sm sm:text-lg font-roboto my-4">
+          Explore our Blog Section for expert tips, pet care advice, and the
+          latest trends. Learn about health, training, and fun activities to
+          keep your furry friends happy and healthy!
         </p>
       </div>
 
       {/*Blog card*/}
-      <div className="flex justify-between mt-[25px]">
+      <div className="flex justify-evenly mt-[25px] flex-wrap gap-4">
         {blogData.map((data, index) => (
           <div
             key={index}
-            className="w-[250px] rounded-lg overflow-hidden shadow-2xl cursor-pointer hover:scale-105 transition-all"
+            className="w-[250px]  bg-richblack-800 p-1 rounded"
           >
-            <Img src={data.image} className="w-full object-cover" />
+            <Img src={data.image} className="w-full" />
 
-            <p className="p-4">{data.title}</p>
+            <p className="text-sm lg:text-md">{data.title}</p>
           </div>
         ))}
       </div>

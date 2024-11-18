@@ -167,3 +167,24 @@ exports.getCategories = async (req, res) => {
     });
   }
 };
+
+//get categories name
+exports.getCategoriesName = async (req, res) => {
+  try {
+    const data = await Category.find({},{
+      title : true
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Categories fetched successfully",
+      data,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch Category.",
+      error: err.message,
+    });
+  }
+};
