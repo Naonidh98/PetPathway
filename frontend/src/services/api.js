@@ -21,6 +21,7 @@ export const blogsApi = {
   get_blog_data: BASE_URL + "/blog/detail",
   delete_blog: BASE_URL + "/blog/delete",
   update_blog: BASE_URL + "/blog/update",
+  like_blog: BASE_URL + "/blog/like"
 };
 
 export const categoryApi = {
