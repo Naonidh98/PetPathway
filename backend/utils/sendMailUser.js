@@ -22,12 +22,10 @@ exports.sendVerificationEmail = async (email, otp) => {
       to: email, // list of receivers
       subject: "Email Verification OTP", // Subject line
       text: "", // plain text body
-      html: `<p>otp : ${otp}</p>
-        <br/>
-        <p>OTP vaild for next 5 minutes</p>
-      `, // html body
+      html: `<h1>Welcome to PetPathway</h1><br/>
+             <p>otp : ${otp}</p><br/>
+             <p>OTP vaild for next 5 minutes</p>`, // html body
     });
-
     console.log("Mail sent successfully");
   } catch (err) {
     return res.status(500).json({
@@ -46,12 +44,10 @@ exports.sendResetPasswordEmail = async (email, link) => {
       to: email, // list of receivers
       subject: "Reset Password", // Subject line
       text: "", // plain text body
-      html: `<p>link : ${link}</p>
-        <br/>
-        <p>Link vaild for next 5 minutes</p>
-      `, // html body
+      html: `<h1>Reset Password Link</h1><br/>
+            <p>Click on this link to reset your password.: ${link}</p>
+            <br/><p>Link vaild for next 5 minutes</p>`, // html body
     });
-
     console.log("Mail sent successfully");
   } catch (err) {
     return res.status(500).json({

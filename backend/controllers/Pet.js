@@ -8,13 +8,20 @@ const {
 //create pet
 exports.createPet = async (req, res) => {
   try {
-    const { name, description, type, age, gender, breed, vaccinated } =
-      req.body;
+    const {
+      name,
+      description,
+      type,
+      age,
+      gender,
+      breed,
+      vaccinated,
+      state,
+      city,
+    } = req.body;
     const userId = req.user._id;
-    const img = req?.files?.image || null;
 
     if (
-      !img ||
       !userId ||
       !name ||
       !description ||
@@ -22,16 +29,15 @@ exports.createPet = async (req, res) => {
       !age ||
       !breed ||
       !vaccinated ||
-      !gender
+      !gender ||
+      !state ||
+      !city
     ) {
       return res.status(400).json({
         success: false,
         message: "Missing requirements",
       });
     }
-
-    //add thumbnail
-    const response = await uploadImageToCloudinary(img);
 
     //create pet
     const data = await Pet.create({
@@ -43,13 +49,15 @@ exports.createPet = async (req, res) => {
       vaccinated,
       gender,
       owner: userId,
-      thumbnail: response.secure_url,
+      state,
+      city,
     });
 
     return res.status(200).json({
       success: true,
       message: "Created Successfully",
       data: data._id,
+      pet: data,
     });
   } catch (err) {
     return res.status(500).json({
@@ -72,9 +80,10 @@ exports.editPet = async (req, res) => {
       gender = "",
       breed = "",
       vaccinated = "",
+      state = "",
+      city = "",
     } = req.body;
     const userId = req.user._id;
-    const img = req?.files?.image || null;
 
     if (!petId) {
       return res.status(400).json({
@@ -106,11 +115,11 @@ exports.editPet = async (req, res) => {
     if (breed !== "") {
       pet.breed = breed;
     }
-
-    if (img !== null) {
-      await deleteImageFromCloudinary(pet.thumbnail);
-      const newImg = await uploadImageToCloudinary(img);
-      pet.thumbnail = newImg.secure_url;
+    if (state !== "") {
+      pet.state = state;
+    }
+    if (city !== "") {
+      pet.city = city;
     }
 
     await pet.save();
@@ -119,6 +128,7 @@ exports.editPet = async (req, res) => {
       success: true,
       message: "edit Successfully",
       data: pet._id,
+      pet: pet,
     });
   } catch (err) {
     return res.status(500).json({
@@ -143,11 +153,9 @@ exports.deletePet = async (req, res) => {
 
     const data = await Pet.findOneAndDelete({ _id: petId });
 
-    await deleteImageFromCloudinary(data.thumbnail);
-
-    data.media.forEach(async (img) => {
-      await deleteImageFromCloudinary(img);
-    });
+    if (data?.thumbnail) {
+      await deleteImageFromCloudinary(data.thumbnail);
+    }
 
     return res.status(200).json({
       success: true,
@@ -162,7 +170,7 @@ exports.deletePet = async (req, res) => {
   }
 };
 
-//add media
+//add / remove media
 exports.addMedia = async (req, res) => {
   try {
     const { petId } = req.body;
@@ -175,62 +183,31 @@ exports.addMedia = async (req, res) => {
       });
     }
 
+    const data = await Pet.findOne({ _id: petId });
+
+    if (data?.thumbnail) {
+      await deleteImageFromCloudinary(data.thumbnail);
+    }
+
     //add thumbnail
     const response = await uploadImageToCloudinary(img);
 
-    await Pet.findByIdAndUpdate(
+    const resdata = await Pet.findByIdAndUpdate(
       {
         _id: petId,
       },
       {
-        $push: {
-          media: response.secure_url,
-        },
+        thumbnail: response.secure_url,
+      },
+      {
+        new: true,
       }
     );
 
     return res.status(200).json({
       success: true,
       message: "Media added",
-    });
-  } catch (err) {
-    return res.status(500).json({
-      success: false,
-      message: "Failed to add",
-      error: err.message,
-    });
-  }
-};
-
-//remove media
-exports.removeMedia = async (req, res) => {
-  try {
-    const { petId, media } = req.body;
-
-    if (!media || !petId) {
-      return res.status(400).json({
-        success: false,
-        message: "Missing requirements",
-      });
-    }
-
-    //remove thumbnail
-    await deleteImageFromCloudinary(media);
-
-    await Pet.findByIdAndUpdate(
-      {
-        _id: petId,
-      },
-      {
-        $pull: {
-          media: media,
-        },
-      }
-    );
-
-    return res.status(200).json({
-      success: true,
-      message: "Media removed",
+      data: resdata,
     });
   } catch (err) {
     return res.status(500).json({
@@ -260,6 +237,36 @@ exports.getPetDetails = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "successfully",
+      data,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch",
+      error: err.message,
+    });
+  }
+};
+
+//fetch pets
+exports.getPetUser = async (req, res) => {
+  try {
+    const { state } = req.body;
+
+    if (!state) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing requirements",
+      });
+    }
+
+    const data = await Pet.find({ state: state })
+      .populate("owner", "firstName lastName email").sort({createdAt : -1})
+      .exec();
+
+    return res.status(200).json({
+      success: true,
+      message: "data fetched successfully",
       data,
     });
   } catch (err) {

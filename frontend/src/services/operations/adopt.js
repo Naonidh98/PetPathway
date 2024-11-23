@@ -1,32 +1,22 @@
 import { apiConnector } from "../apiConnector";
 import { adoptApi } from "../api";
 import toast from "react-hot-toast";
-import { setPetFormStage, setPetFormId } from "../../slices/petFormSlice";
+import {
+  setPetFormStage,
+  setPetFormId,
+  setPetFormData,
+} from "../../slices/petFormSlice";
 
 //create pet
 export function createPet(data, token) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading....");
     try {
-      const newData = new FormData();
-      newData.append("name", data?.name);
-      newData.append("description", data?.description);
-      newData.append("type", data?.type);
-      newData.append("age", data?.age);
-      newData.append("gender", data?.gender);
-      newData.append("vaccinated", true);
-      newData.append("breed", data?.breed);
+      console.log("pet data : ", data);
 
-      newData.append("image", data?.thumbnail[0]);
-
-      const response = await apiConnector(
-        "POST",
-        adoptApi.createPetAdd,
-        newData,
-        {
-          Authorisation: `Bearer ${token}`,
-        }
-      );
+      const response = await apiConnector("POST", adoptApi.createPetAdd, data, {
+        Authorisation: `Bearer ${token}`,
+      });
 
       //response
       console.log(response);
@@ -42,6 +32,7 @@ export function createPet(data, token) {
 
       dispatch(setPetFormStage(2));
       dispatch(setPetFormId(response.data.data));
+      dispatch(setPetFormData(response?.data?.pet));
     } catch (error) {
       console.log("SENDOTP API ERROR............", error);
       toast.error(error?.response?.data?.message);
@@ -51,7 +42,7 @@ export function createPet(data, token) {
 }
 
 //add image
-export function addImagePet(file,id,token,setLoading) {
+export function addImagePet(file, id, token, setLoading) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading....");
     setLoading(true);
@@ -60,10 +51,42 @@ export function addImagePet(file,id,token,setLoading) {
       newData.append("image", file[0]);
       newData.append("petId", id);
 
+      const response = await apiConnector("POST", adoptApi.addImage, newData, {
+        Authorisation: `Bearer ${token}`,
+      });
+
+      //response
+      console.log(response);
+
+      //failure
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+
+      //success message
+      toast.dismiss(toastId);
+      toast.success(response.data.message);
+
+      dispatch(setPetFormData(response?.data?.data));
+    } catch (error) {
+      console.log("SENDOTP API ERROR............", error);
+      toast.error(error?.response?.data?.message);
+    }
+    setLoading(false);
+    toast.dismiss(toastId);
+  };
+}
+
+//pet info state wise
+export function getPetInfos(data, token, setData, setLoading) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading....");
+    setLoading(true);
+    try {
       const response = await apiConnector(
         "POST",
-        adoptApi.addImage,
-        newData,
+        adoptApi.petAdoptDetails,
+        data,
         {
           Authorisation: `Bearer ${token}`,
         }
@@ -80,6 +103,8 @@ export function addImagePet(file,id,token,setLoading) {
       //success message
       toast.dismiss(toastId);
       toast.success(response.data.message);
+
+      setData(response?.data?.data);
     } catch (error) {
       console.log("SENDOTP API ERROR............", error);
       toast.error(error?.response?.data?.message);
@@ -89,4 +114,39 @@ export function addImagePet(file,id,token,setLoading) {
   };
 }
 
-//remove image
+//pet details
+export function getPetDetail(data, token, setData, setLoading) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading....");
+    setLoading(true);
+    try {
+      const response = await apiConnector(
+        "POST",
+        adoptApi.petDetail,
+        data,
+        {
+          Authorisation: `Bearer ${token}`,
+        }
+      );
+
+      //response
+      console.log(response);
+
+      //failure
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+
+      //success message
+      toast.dismiss(toastId);
+      toast.success(response.data.message);
+
+      setData(response?.data?.data);
+    } catch (error) {
+      console.log("SENDOTP API ERROR............", error);
+      toast.error(error?.response?.data?.message);
+    }
+    setLoading(false);
+    toast.dismiss(toastId);
+  };
+}

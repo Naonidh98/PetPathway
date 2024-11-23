@@ -28,7 +28,7 @@ const OTP = () => {
       lastName: profile.lastName,
       email: profile.email,
       otp: otp,
-      type: "Client",
+      type: "user",
       password: profile.password,
     };
 

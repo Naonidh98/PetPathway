@@ -31,18 +31,20 @@ const petSchema = new mongoose.Schema({
     ref: "User",
   },
   vaccinated: {
-    type: Boolean,
+    type: String,
     required: true,
   },
   thumbnail: {
     type: String,
-    required: true,
   },
-  media: [
-    {
-      type: String,
-    },
-  ],
+  state : {
+    type : String,
+    required : true
+  },
+  city : {
+    type : String,
+    required : true
+  },
 },{
   timestamps : true
 });

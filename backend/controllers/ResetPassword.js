@@ -18,6 +18,7 @@ exports.resetPasswordToken = async (req, res) => {
 
     const user = await User.findOne({ email: email });
     //no user found
+
     if (!user) {
       return res.status(400).json({
         success: false,
@@ -78,14 +79,13 @@ exports.resetPassword = async (req, res) => {
         message: "Token expired. Please regenerate a new one.",
       });
     } else {
-
       const hashedPassword = await bcrypt.hash(password, 10);
       user.password = hashedPassword;
       await user.save();
 
       return res.status(200).json({
         success: true,
-        message: "Password updated successfully.",
+        message: "Password updated successfully.Please login",
       });
     }
   } catch (err) {

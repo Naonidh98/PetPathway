@@ -1,10 +1,9 @@
 import { apiConnector } from "../apiConnector";
-import { categoryApi ,storeApi } from "../api";
+import { categoryApi, storeApi } from "../api";
 import { setProfile } from "../../slices/profileSlice";
 import { setUser, setToken } from "../../slices/userSlice";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
-
 
 //get all categories
 export function getCategory(setData) {
@@ -129,14 +128,11 @@ export function getStoreItem(setLoading, setData) {
     const toastId = toast.loading("Loading....");
     setLoading(true);
     try {
-      const response = await apiConnector(
-        "GET",
-       storeApi.getStoreDetails,
-      );
+      const response = await apiConnector("GET", storeApi.getStoreDetails);
 
       //response
       console.log(response);
-      setData(response.data.data)
+      setData(response.data.data);
 
       //failure
       if (!response.data.success) {
@@ -148,6 +144,79 @@ export function getStoreItem(setLoading, setData) {
       toast.success(response.data.message);
     } catch (error) {
       console.log("SENDOTP API ERROR............", error);
+      toast.error(error?.response?.data?.message);
+    }
+    toast.dismiss(toastId);
+    setLoading(false);
+  };
+}
+
+//get store details
+export function getStoreDetails(setLoading, setData, setDogs, setCats, token) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading....");
+    setLoading(true);
+    try {
+      const response = await apiConnector(
+        "GET",
+        storeApi.getStoreAnalytics,
+        {},
+        {
+          Authorisation: `Bearer ${token}`,
+        }
+      );
+
+      //response
+      console.log(response);
+      setData(response.data.data);
+      setDogs(response.data.dogs);
+      setCats(response.data.cats);
+
+      //failure
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+
+      //success message
+      toast.dismiss(toastId);
+      toast.success(response.data.message);
+    } catch (error) {
+      console.log("SENDOTP API ERROR............", error);
+      toast.error(error?.response?.data?.message);
+    }
+    toast.dismiss(toastId);
+    setLoading(false);
+  };
+}
+
+export function getCatDash(setLoading, setData, token) {
+  return async (dispatch) => {
+    const toastId = toast.loading("Loading....");
+    setLoading(true);
+    try {
+      const response = await apiConnector(
+        "GET",
+        storeApi.getCategoryAndItems,
+        {},
+        {
+          Authorisation: `Bearer ${token}`,
+        }
+      );
+
+      //response
+      console.log(response);
+      setData(response.data.categories);
+      
+      //failure
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+
+      //success message
+      toast.dismiss(toastId);
+      toast.success(response.data.message);
+    } catch (error) {
+      console.log("API ERROR............", error);
       toast.error(error?.response?.data?.message);
     }
     toast.dismiss(toastId);
