@@ -6,12 +6,12 @@ export const authApi = {
   signup: BASE_URL + "/auth/signup",
   reset_password_token: BASE_URL + "/user/password-reset/token",
   resetPassword: BASE_URL + "/user/password-reset",
-  update_password: BASE_URL + "/auth/password/update"
+  update_password: BASE_URL + "/auth/password/update",
 };
 
 export const profileApi = {
   update_profileImg: BASE_URL + "/profile/update/image",
-  update_profile_data: BASE_URL + "/profile/update/data"
+  update_profile_data: BASE_URL + "/profile/update/data",
 };
 
 export const blogsApi = {
@@ -30,14 +30,19 @@ export const categoryApi = {
   update_category: BASE_URL + "/category/edit",
   delete_category: BASE_URL + "/category/delete",
   create_item: BASE_URL + "/item/create",
-  get_category_name: BASE_URL + "/category/all/name"
+  get_category_name: BASE_URL + "/category/all/name",
 };
 
 export const storeApi = {
-  getStoreDetails: BASE_URL + "/store/data"
-}
+  getStoreDetails: BASE_URL + "/store/data",
+  getStoreAnalytics: BASE_URL + "/store/details",
+  getCategoryAndItems : BASE_URL + "/store/item_and_cat"
+};
+
 export const adoptApi = {
   createPetAdd: BASE_URL + "/pet/create",
   addImage: BASE_URL + "/pet/media/add",
-  removeImage: BASE_URL + "/pet/media/remove"
-}
+  removeImage: BASE_URL + "/pet/media/remove",
+  petAdoptDetails : BASE_URL + "/pet/state/all",
+  petDetail : BASE_URL + "/pet/detail"
+};

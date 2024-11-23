@@ -1,7 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardChart from "./DashboardChart";
+import LoadingTwo from "../../components/Spinner/LoadingTwo";
+import { useDispatch, useSelector } from "react-redux";
+import { getStoreDetails } from "../../services/operations/store";
+
 const StoreDashboard = () => {
-  const [currentChart, setCurrentChart] = useState("revenue");
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.user);
+  const [data, setData] = useState(null);
+  const [dogs, setDogs] = useState(0);
+  const [cats, setCats] = useState(0);
+
+  console.log(token);
+
+  useEffect(() => {
+    dispatch(getStoreDetails(setLoading, setData,setDogs,setCats, token));
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="mx-auto h-full w-11/12 max-w-[1000px] py-10 flex items-center justify-center">
+        <LoadingTwo />
+      </div>
+    );
+  } else if (data === null) {
+    return <div>No data found</div>;
+  }
+
   return (
     <div>
       <div>
@@ -9,7 +35,7 @@ const StoreDashboard = () => {
           <div>
             <div className="space-y-2">
               <h1 className="text-2xl font-bold text-richblack-5">
-                Hi Moderator 👋
+                Hi Admin 👋
               </h1>
               <p className="font-medium text-richblack-200">
                 Let's start something new
@@ -19,64 +45,35 @@ const StoreDashboard = () => {
               <div className="flex flex-col flex-1 rounded-md bg-richblack-800 p-6">
                 <div className="flex items-center justify-between">
                   <p className="text-lg font-bold text-richblack-5">
-                    Visualize
+                    Visualize Store categories
                   </p>
-                  <div className="flex items-center space-x-4">
-                    <button
-                      onClick={() => setCurrentChart("revenue")}
-                      className={`px-2 py-2 rounded-md ${
-                        currentChart === "revenue"
-                          ? "bg-richblack-900 text-yellow-100"
-                          : "bg-richblack-800 text-richblack-100"
-                      }`}
-                    >
-                      Revenue
-                    </button>
-                    <button
-                      onClick={() => setCurrentChart("students")}
-                      className={`px-2 py-2 rounded-md ${
-                        currentChart === "students"
-                          ? "bg-richblack-900 text-yellow-100"
-                          : "bg-richblack-800 text-richblack-100"
-                      }`}
-                    >
-                      Students
-                    </button>
-                  </div>
+                  <div className="flex items-center space-x-4"></div>
                 </div>
-                {/*<DashboardChart details={details} currentChart={currentChart} />*/}
+                <DashboardChart details={data} />
               </div>
               <div className="flex min-w-[250px] flex-col rounded-md bg-richblack-800 p-6">
                 <p className="text-lg font-bold text-richblack-5">Statistics</p>
                 <div className="mt-4 space-y-4">
                   <div>
-                    <p className="text-lg text-richblack-200">Total Courses</p>
+                    <p className="text-lg text-richblack-200">Total Pets</p>
                     <p className="text-3xl font-semibold text-richblack-50">
-                      120
+                      {dogs + cats}
                     </p>
                   </div>
                   <div>
-                    <p className="text-lg text-richblack-200">Total Students</p>
+                    <p className="text-lg text-richblack-200">Total Dogs</p>
                     <p className="text-3xl font-semibold text-richblack-50">
-                      151
+                      {dogs}
                     </p>
                   </div>
                   <div>
-                    <p className="text-lg text-richblack-200">Total Earnings</p>
+                    <p className="text-lg text-richblack-200">Total Cats</p>
                     <p className="text-3xl font-semibold text-richblack-50">
-                      ₹ 100
+                      {cats}
                     </p>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="rounded-md bg-richblack-800 p-6">
-            <div className="flex items-center justify-between">
-              <p className="text-lg font-bold text-richblack-5">Your Courses</p>
-              <button className="text-xs font-semibold text-yellow-50">
-                View all
-              </button>
             </div>
           </div>
         </div>

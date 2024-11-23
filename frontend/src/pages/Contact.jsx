@@ -1,6 +1,39 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm();
+
+  async function submitHandler(data) {
+    console.log(data);
+    const toastId = toast.loading("Loading...");
+    try {
+      await emailjs
+        .send("service_8g33kwg", "template_vvrryw3", data, {
+          publicKey: "GDBpZ07EFhniBXotL",
+        })
+        .then(
+          () => {
+            console.log("SUCCESS!");
+            toast.success("Message sent successfully");
+          },
+          (error) => {
+            console.log("FAILED...", error.text);
+          }
+        );
+    } catch (error) {
+      console.log(error);
+    }
+    toast.dismiss(toastId);
+  }
+
   return (
     <div className="my-[40px] lg:my-[80px]">
       <div className="grid md:grid-cols-2 gap-16 items-center relative overflow-hidden p-8  rounded-3xl max-w-6xl mx-auto  mt-4 font-[sans-serif] before:absolute before:right-0 before:w-[300px] before:bg-richblack-800 before:h-full max-md:before:hidden">
@@ -13,49 +46,82 @@ const Contact = () => {
             experienced team is ready to engage with you.
           </p>
 
-          <form>
+          <form onSubmit={handleSubmit(submitHandler)}>
             <div className="space-y-4 mt-8 text-black">
               <input
                 type="text"
                 placeholder="Full Name"
                 className="px-2 py-3  w-full text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 outline-none"
+                {...register("name", { required: true })}
               />
+              {errors.name && (
+                <span className="text-[#FF0000] font-bold font-inter">
+                  Required <sup>*</sup>
+                </span>
+              )}
 
               <div className="grid grid-cols-2 gap-6">
                 <input
                   type="text"
                   placeholder="City"
                   className="px-2 py-3  w-full text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 outline-none"
+                  {...register("city", { required: true })}
                 />
+                {errors.city && (
+                  <span className="text-[#FF0000] font-bold font-inter">
+                    Required <sup>*</sup>
+                  </span>
+                )}
 
                 <input
                   type="text"
                   placeholder="Postcode"
                   className="px-2 py-3  w-full text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 outline-none"
+                  {...register("postcode", { required: true })}
                 />
+                {errors.postcode && (
+                  <span className="text-[#FF0000] font-bold font-inter">
+                    Required <sup>*</sup>
+                  </span>
+                )}
               </div>
               <input
                 type="number"
                 placeholder="Phone No."
                 className="px-2 py-3  w-full text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 outline-none"
+                {...register("phone", { required: true })}
               />
+              {errors.phone && (
+                <span className="text-[#FF0000] font-bold font-inter">
+                  Required <sup>*</sup>
+                </span>
+              )}
 
               <input
                 type="email"
                 placeholder="Email"
                 className="px-2 py-3  w-full text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 outline-none"
+                {...register("email", { required: true })}
               />
+              {errors.email && (
+                <span className="text-[#FF0000] font-bold font-inter">
+                  Required <sup>*</sup>
+                </span>
+              )}
 
               <textarea
                 placeholder="Write Message"
                 className="px-2 pt-3  w-full text-gray-800 text-sm border-b border-gray-300 focus:border-blue-600 outline-none"
+                {...register("message", { required: true })}
               ></textarea>
+              {errors.message && (
+                <span className="text-[#FF0000] font-bold font-inter">
+                  Required <sup>*</sup>
+                </span>
+              )}
             </div>
 
-            <button
-              type="button"
-              className="mt-8 flex items-center justify-center text-sm w-full rounded-md px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white"
-            >
+            <button className="mt-8 flex items-center justify-center text-sm w-full rounded-md px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16px"

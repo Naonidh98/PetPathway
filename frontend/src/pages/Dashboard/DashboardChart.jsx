@@ -18,27 +18,14 @@ const DashboardChart = ({ details, currentChart }) => {
     return colors;
   };
 
-  const StudentsData = {
-    labels: details?.map((course) => course?.courseName),
+  const StoreData = {
+    labels: details?.map((data) => data?.title),
     datasets: [
       {
-        label: "# of Students",
-        data: details?.map((course) => course?.totalStudents),
+        label: "Items",
+        data: details?.map((data) => data?.items.length),
         backgroundColor: randomColor(details?.length),
-        borderColor: randomColor(),
-        borderWidth: 1,
-      },
-    ],
-  };
-
-  const RevenueData = {
-    labels: details?.map((course) => course?.courseName),
-    datasets: [
-      {
-        label: "# of ₹",
-        data: details?.map((course) => course?.totalRevenue),
-        backgroundColor: randomColor(details?.length),
-        borderColor: randomColor(),
+        borderColor: randomColor(details?.length),
         borderWidth: 1,
       },
     ],
@@ -47,30 +34,25 @@ const DashboardChart = ({ details, currentChart }) => {
   return (
     <div>
       <div className="mt-8 ">
-        {/* change label position extreme right and increase gap and change chart size */}
-        {currentChart === "revenue" ? (
-          <Pie
-            data={RevenueData}
-            options={{
-              plugins: {
-                legend: {
-                  position: "right",
-                  labels: {
-                    boxWidth: 10,
-                    boxHeight: 10,
-                    padding: 20,
-                    font: {
-                      size: 12,
-                    },
+        <Pie
+          data={StoreData}
+          options={{
+            plugins: {
+              legend: {
+                position: "right",
+                labels: {
+                  boxWidth: 10,
+                  boxHeight: 10,
+                  padding: 20,
+                  font: {
+                    size: 12,
                   },
                 },
               },
-              aspectRatio: 2,
-            }}
-          />
-        ) : (
-          <Pie data={StudentsData} />
-        )}
+            },
+            aspectRatio: 2,
+          }}
+        />
       </div>
     </div>
   );

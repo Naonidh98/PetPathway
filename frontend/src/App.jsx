@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -34,12 +34,13 @@ import {
   StoreDashboard,
   SearchResult,
   AddStoreCategory,
-  CategoryItems
+  CategoryItems,
 } from "./pages/index";
 
 //todo
 import Adopt from "./pages/Adopt";
 import PetForm from "./pages/PetForm";
+import Pet from "./pages/Pet";
 
 //importing Navbar and Foooter
 import { TopBar, Footer, BreedDetail, BlogDetail } from "./components/index";
@@ -64,16 +65,26 @@ function Layout2({ children }) {
 }
 
 const App = () => {
+ 
   return (
     <div className="w-screen h-full overflow-x-hidden bg-richblack-900 text-white">
       <TopBar />
       <Routes>
         {/* routes accessed when user logged in */}
         <Route element={<Layout />}>
-          <Route path="/groom" element={<Groom />} />
+          <Route path="/adopt" element={<Adopt />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/blog/edit/:id" element={<EditBlog />} />
+          <Route path="/pet/detail/:id" element={<Pet />} />
+
+          <Route path="/Cart" element={<Cart />} />
+          <Route path="/store" element={<Store />} />
+          <Route path="/store/categories/all" element={<ItemCategories />} />
+          <Route path="/category/detail/:id" element={<CategoryDetail />} />
+          <Route path="/store/:id" element={<ItemsDetails />} />
+          <Route path="/category/:name" element={<CategoryItems />} />
+          <Route path="/search/:query" element={<SearchResult />} />
         </Route>
 
         <Route path="/" element={<Home />} />
@@ -86,21 +97,6 @@ const App = () => {
 
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
-       
-        <Route path="/Cart" element={<Cart />} />
-        <Route path="/adopt" element={<Adopt/>}/>
-
-        <Route path="/breeds/:type" element={<BreedDetail />} />
-        <Route path="/store" element={<Store />} />
-        <Route path="/store/categories/all" element={<ItemCategories />} />
-        <Route path="/category/detail/:id" element={<CategoryDetail />} />
-
-        <Route path="/store/:id" element={<ItemsDetails />} />
-        
-        <Route path="/store/:id" element={<ItemsDetails />} />
-        <Route path="/category/:name" element={<CategoryItems />} />
-
-        <Route path="/search/:query" element={<SearchResult/>}/>
 
         {/* Dashboard routing */}
         <Route
@@ -115,9 +111,18 @@ const App = () => {
           <Route path="/dashboard/user/blogs" element={<MyBlogs />} />
           <Route path="/dashboard/user/pets" element={<PetForm />} />
           <Route path="/dashboard/admin/additems" element={<AddStoreItems />} />
-          <Route path="/dashboard/admin/searchItem" element={<SearchStoreItem />} />
-          <Route path="/dashboard/admin/addcategory" element={<AddStoreCategory />} />
-          <Route path="/dashboard/admin/dashboard" element={<StoreDashboard />} />
+          <Route
+            path="/dashboard/admin/searchItem"
+            element={<SearchStoreItem />}
+          />
+          <Route
+            path="/dashboard/admin/addcategory"
+            element={<AddStoreCategory />}
+          />
+          <Route
+            path="/dashboard/admin/dashboard"
+            element={<StoreDashboard />}
+          />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />

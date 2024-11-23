@@ -1,6 +1,6 @@
 const Category = require("../models/Category");
 const Item = require("../models/Item");
-
+const Pet = require("../models/Pet");
 //create category
 exports.getStoreData = async (req, res) => {
   try {
@@ -62,6 +62,87 @@ exports.getStoreData = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Failed to load store data",
+      error: err.message,
+    });
+  }
+};
+
+// admin - analytics
+exports.storeDetails = async (req, res) => {
+  try {
+    const data = await Category.find(
+      {},
+      {
+        title: true,
+        items: true,
+      }
+    );
+
+    const dogs = await Pet.find(
+      { type: "Dog" },
+      {
+        _id: true,
+      }
+    );
+    const cats = await Pet.find(
+      { type: "Cat" },
+      {
+        _id: true,
+      }
+    );
+
+    return res.status(200).json({
+      success: true,
+      data: data,
+      dogs: dogs.length,
+      cats: cats.length,
+      message: "store data fetched",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch data",
+      error: err.message,
+    });
+  }
+};
+
+// items ans categories
+exports.getallCategoryandItems = async (req, res) => {
+  try {
+
+    //category
+    const data1 = await Category.find(
+      {},
+      {
+        title: true,
+        thumbnail: true,
+        createdAt: true,
+        updatedAt: true,
+      }
+    ).limit(5).exec();
+
+    //items
+    const data2 = await Item.find(
+      {},
+      {
+        title: true,
+        thumbnail: true,
+        createdAt: true,
+        updatedAt: true,
+      }
+    ).limit(5).exec();
+
+    return res.status(200).json({
+      success: true,
+      categories: data1,
+      items: data2,
+      message: "data fetched",
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch data",
       error: err.message,
     });
   }

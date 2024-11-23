@@ -29,7 +29,7 @@ exports.sendOTP = async (req, res) => {
       });
     }
 
-    const newOtp = otpGenerator.generate(6, {
+    let newOtp = otpGenerator.generate(6, {
       upperCaseAlphabets: false,
       specialChars: false,
       lowerCaseAlphabets: false,
@@ -149,8 +149,6 @@ exports.signup = async (req, res) => {
     });
   }
 };  
-
-//
 
 //login
 exports.login = async (req, res) => {

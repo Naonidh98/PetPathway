@@ -4,13 +4,15 @@ import {combineReducers}  from "@reduxjs/toolkit"
 import profileSlice from "../slices/profileSlice";
 import userSlice from "../slices/userSlice";
 import blogSlice from "../slices/blogSlice";
-import petFormSlice from "../slices/petFormSlice"
+import petFormSlice from "../slices/petFormSlice";
+import locationSLice from "../slices/locationSlice"
 
 const rootReducer = combineReducers({
     profile : profileSlice,
     user : userSlice,
     blog : blogSlice,
-    petForm : petFormSlice
+    petForm : petFormSlice,
+    location : locationSLice
 })
 
 export default rootReducer;

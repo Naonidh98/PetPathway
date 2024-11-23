@@ -3,24 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPetFormStage, setPetFormEdit } from "../../slices/petFormSlice";
 import { addImagePet } from "../../services/operations/adopt";
 
-const PreviewImage = () => {
+const PreviewImage = ({ link }) => {
   return (
     <div className="w-full text-white flex justify-between p-2 bg-pink-500 rounded">
-      <p>
-        Image <span>1</span>
-      </p>
-      <p>view</p>
-      <button>remove</button>
+      <p>Cover Image</p>
+
+      <a target="__blank" href={link}>
+        view
+      </a>
     </div>
   );
 };
 
 const AddPetMediaForm = () => {
   const dispatch = useDispatch();
-  const { id } = useSelector((state) => state.petForm);
+  const { id, formData } = useSelector((state) => state.petForm);
   const { token } = useSelector((state) => state.user);
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  console.log("data : ", formData);
 
   return (
     <div>
@@ -40,19 +42,27 @@ const AddPetMediaForm = () => {
           type="file"
         />
         <div className="flex justify-end my-2">
-          <button
-            className="bg-blue-400 p-2 rounded"
-            onClick={() => {
-              dispatch(addImagePet(file, id, token, setLoading));
-            }}
-          >
-            Add
-          </button>
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <button
+              className="bg-blue-400 p-2 rounded"
+              onClick={() => {
+                dispatch(addImagePet(file, id, token, setLoading));
+              }}
+            >
+              Add
+            </button>
+          )}
         </div>
 
         <div>
-          <p>Preview :</p>
-          <PreviewImage />
+          {formData?.thumbnail && (
+            <div>
+              <p>Preview :</p>
+              <PreviewImage link={formData?.thumbnail} />
+            </div>
+          )}
         </div>
 
         <div className="flex justify-end my-[25px]">
@@ -69,9 +79,14 @@ const AddPetMediaForm = () => {
               >
                 Back
               </button>
-              <button className="bg-blue-400 p-2 rounded" onClick={()=>{
-                dispatch(setPetFormStage(3))
-              }}>Next</button>
+              <button
+                className="bg-blue-400 p-2 rounded"
+                onClick={() => {
+                  dispatch(setPetFormStage(3));
+                }}
+              >
+                Next
+              </button>
             </div>
           )}
         </div>

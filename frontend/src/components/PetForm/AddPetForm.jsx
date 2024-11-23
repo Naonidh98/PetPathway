@@ -10,14 +10,15 @@ const AddPetForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
 
   const { token } = useSelector((state) => state.user);
-  const { editForm } = useSelector((state) => state.petForm);
+  const { editForm, formData } = useSelector((state) => state.petForm);
   const dispatch = useDispatch();
 
   const editor = useRef(null);
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState(formData?.description || "");
   const [loading, setLoading] = useState(false);
   const config = {
     readonly: false, // all options from https://xdsoft.net/jodit/doc/
@@ -66,12 +67,25 @@ const AddPetForm = () => {
 
   function submitHandler(data) {
     if (content === "") {
-      toast.error("desc required");
+      toast.error("description required");
       return;
     } else {
-      data.content = content;
+      data.description = content;
       dispatch(createPet(data, token));
     }
+  }
+
+  if (formData !== null && editForm === true) {
+    setValue("name", formData.name);
+    setValue("breed", formData.breed);
+    setValue("type", formData.type);
+    setValue("age", formData.age);
+    setValue("age", formData.age);
+    setValue("gender", formData.gender);
+    setValue("vaccinated", formData.vaccinated);
+    setValue("state", formData.state);
+    setValue("city", formData.city);
+    
   }
 
   return (
@@ -127,7 +141,7 @@ const AddPetForm = () => {
               {...register("type", { required: true })}
             >
               <option selected>Dog</option>
-              <option>Cats</option>
+              <option>Cat</option>
             </select>
             {errors.type && (
               <span className="text-[#FF0000] font-bold font-inter">
@@ -207,13 +221,14 @@ const AddPetForm = () => {
               State :
             </label>
 
-            <select
+            <input
+              type="text"
+              id="state"
               className="bg-richblack-600 rounded-sm p-2 w-full my-2"
+              placeholder="Enter state"
               {...register("state", { required: true })}
-            >
-              <option selected>Delhi</option>
-              <option>Punjab</option>
-            </select>
+            />
+
             {errors.state && (
               <span className="text-[#FF0000] font-bold font-inter">
                 Required <sup>*</sup>
@@ -222,14 +237,13 @@ const AddPetForm = () => {
           </div>
           <div className="w-[45%]">
             <label htmlFor="city" className="cursor-pointer">
-              City :
+              Town :
             </label>
             <input
-              rows={3}
               type="text"
-              id="breed"
+              id="city"
               className="bg-richblack-600 rounded-sm p-2 w-full my-2"
-              placeholder="Enter city name"
+              placeholder="Enter town name"
               {...register("city", { required: true })}
             />
             {errors.city && (
@@ -254,27 +268,6 @@ const AddPetForm = () => {
             <option>No</option>
           </select>
           {errors.vaccinated && (
-            <span className="text-[#FF0000] font-bold font-inter">
-              Required <sup>*</sup>
-            </span>
-          )}
-        </div>
-
-        {/* Thumbnail */}
-        <div>
-          <label
-            class="block mb-2 text-gray-900 dark:text-white"
-            for="file_input"
-          >
-            Thumbnail :
-          </label>
-          <input
-            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-            id="file_input"
-            type="file"
-            {...register("thumbnail", { required: true })}
-          />
-          {errors.thumbnail && (
             <span className="text-[#FF0000] font-bold font-inter">
               Required <sup>*</sup>
             </span>
