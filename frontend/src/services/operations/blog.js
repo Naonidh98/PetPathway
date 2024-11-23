@@ -212,6 +212,43 @@ export function deleteUserBlog(data, token, setMyBlogs, setLoading) {
   };
 }
 
+//like blog
+export function likeBlog(data, token, setLikeCount, setLiked) {
+  return async (dispatch) => {
+
+    const toastId = toast.loading("Loading....");
+    try {
+      const response = await apiConnector(
+        "PUT",
+        blogsApi.like_blog,
+        data,
+        {
+          Authorisation: `Bearer ${token}`,
+        }
+      );
+
+      //response
+      console.log(response);
+
+      //failure
+      if (!response.data.success) {
+        throw new Error(response.data.message);
+      }
+
+      //success message
+      toast.dismiss(toastId);
+      toast.success(response.data.message);
+
+      setLikeCount(prev => prev + (response.data.message.includes('dislike') ? -1 : 1));
+      setLiked(prev => !prev);
+    } catch (error) {
+      console.log("API ERROR............", error);
+      toast.error(error?.response?.data?.message);
+    }
+    toast.dismiss(toastId);
+  };
+}
+
 export function editBlogData(data, token, setLoading) {
   return async (dispatch) => {
     setLoading(true);
@@ -223,7 +260,7 @@ export function editBlogData(data, token, setLoading) {
       newData.append("blogId", data?.id);
       if (data?.image !== null) {
         newData.append("image", data?.image);
-      } 
+      }
 
       const response = await apiConnector(
         "PUT",

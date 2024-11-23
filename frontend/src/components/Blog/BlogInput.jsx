@@ -109,7 +109,7 @@ const BlogInput = () => {
           <img
             src={user?.profile_image}
             alt={`profile-${user?.firstName}`}
-            className="aspect-square w-[78px] rounded-full object-cover"
+            className="aspect-square sm:w-[78px] rounded-full object-cover w-[60px]"
           />
           <input
             id="title"
