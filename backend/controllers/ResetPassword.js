@@ -29,7 +29,7 @@ exports.resetPasswordToken = async (req, res) => {
     //hashed token
     const token = crypto.randomBytes(20).toString("hex");
 
-    const link = "localhost:5163/reset-password/" + token;
+    const link = "https://petpathway.netlify.app/reset-password/" + token;
 
     //sending link to user
     await sendResetPasswordEmail(email, link);
