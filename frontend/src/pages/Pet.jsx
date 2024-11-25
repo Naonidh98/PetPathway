@@ -6,7 +6,6 @@ import RawHtml from "react-raw-html";
 import { LoadingTwo } from "../components";
 import { getPetDetail } from "../services/operations/adopt";
 
-
 const Pet = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -29,25 +28,31 @@ const Pet = () => {
   }, []);
 
   if (loading) {
-    return <div className="h-screen w-screen flex items-center justify-center"><LoadingTwo/></div>;
+    return (
+      <div className="h-screen w-screen flex items-center justify-center">
+        <LoadingTwo />
+      </div>
+    );
   }
 
   return (
     <div className="w-[98%] max-w-[1440px] mx-auto">
       {data && (
-        <>
+        <div className="">
           <button
-            className="mx-10 mt-5 flex gap-2 items-center hover:text-[#2d42bb]"
+            className="mx-5 md:mx-10 mt-5 flex gap-2 items-center hover:text-[#2d42bb]"
             onClick={() => {
               navigate("/adopt");
             }}
           >
             <IoIosArrowBack /> Back
           </button>
-          <div className=" flex flex-col items-center mx-60 my-10">
+          <div className="w-full items-center mt-4">
             {/* blog title  */}
             <div className="mb-4">
-              <h1 className="text-5xl font-bold text-center">{data?.name}</h1>
+              <h1 className="w-full text-3xl xl:text-5xl font-bold text-center">
+                {data?.name}
+              </h1>
             </div>
 
             <div className="mb-10 text-center">
@@ -63,7 +68,7 @@ const Pet = () => {
             {/* pet Image */}
             <div>
               {true && (
-                <div className="w-[50rem] h-[30rem] overflow-hidden rounded-lg mb-10">
+                <div className="w-[80%] md:max-w-[450px] rounded-lg mb-10 mx-auto">
                   <img
                     src={data?.thumbnail}
                     className="w-full h-full object-cover"
@@ -73,41 +78,46 @@ const Pet = () => {
             </div>
 
             {/* blog Description */}
-            <div className="w-full text-left text-lg mb-4">
+            <div className="w-full text-left text-md lg:text-lg mb-4">
               <RawHtml.div>{data?.description}</RawHtml.div>
             </div>
 
-             <hr className="w-full h-1 my-2 bg-white"/>   
+            <hr className="w-full h-1 my-2 bg-white" />
 
             {/* blog details */}
             <div className="w-full flex flex-col gap-2 my-8 text-left">
-              <p className="text-xl w-full">
+              <p className="text-lg lg:text-xl w-full">
                 <span className="font-bold">State :</span> {data?.state}
               </p>
-              <p className="text-xl w-full">
+              <p className="text-lg lg:text-xl w-full">
                 <span className="font-bold">Town :</span> {data?.city}
               </p>
-              <p className="text-xl w-full">
+              <p className="text-lg lg:text-xl w-full">
                 <span className="font-bold">Gender :</span> {data?.gender}
               </p>
-              <p className="text-xl w-full">
+              <p className="text-lg lg:text-xl w-full">
                 <span className="font-bold">Age :</span> {data?.age}
               </p>
-              <p className="text-xl w-full">
+              <p className="text-lg lg:text-xl w-full">
                 <span className="font-bold">Vaccinated :</span>{" "}
                 {data?.vaccinated}
               </p>
-              <p className="text-xl w-full">
+              <p className="text-lg lg:text-xl w-full">
                 <span className="font-bold">Owner :</span>{" "}
                 {data?.owner?.firstName} {data?.owner?.lastName}
               </p>
-              <p className="text-xl w-full">
+              <p className="text-lg lg:text-xl w-full">
                 <span className="font-bold">Contact :</span>{" "}
-                <a href={`mailto:${data?.owner?.email}`} className="text-blue-100">Click here</a>
+                <a
+                  href={`mailto:${data?.owner?.email}`}
+                  className="text-blue-100"
+                >
+                  Click here
+                </a>
               </p>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

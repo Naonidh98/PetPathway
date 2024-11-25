@@ -6,26 +6,14 @@ const orderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    amount: {
-      type: String,
-      required: true,
-    },
-    prepaid: {
-      type: Boolean,
-      required: true,
-    },
     details: {
-      type: String,
+      type: Object,
       required: true,
     },
     customer : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "User",
         required : true
-    },
-    address : {
-        type: String,
-        required: true,
     }
   },
   {

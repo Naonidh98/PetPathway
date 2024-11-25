@@ -10,8 +10,14 @@ import {
 } from "../components/index";
 
 import { FaChevronDown } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const { token } = useSelector((state) => state.user);
+  
+  
   return (
     <div className="w-full h-full">
       <div className="w-[98%] max-w-[1440px] mx-auto relative">
@@ -32,12 +38,24 @@ const Home = () => {
               </p>
             </div>
             <div className="flex justify-center items-center gap-8">
-              <button className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 border border-indigo-700 py-2 sm:py-4 text-sm">
+              <button
+                onClick={() => {
+                  navigate("/adopt");
+                }}
+                className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 border border-indigo-700 py-2 sm:py-4 text-sm"
+              >
                 Learn more
               </button>
-              <button className="bg-blue-400 p-2 rounded px-4 sm:px-10 font-bold py-2 sm:py-4 text-sm">
-                Register
-              </button>
+              {!token && (
+                <button
+                  onClick={() => {
+                    navigate("/register");
+                  }}
+                  className="bg-blue-400 p-2 rounded px-4 sm:px-10 font-bold py-2 sm:py-4 text-sm"
+                >
+                  Register
+                </button>
+              )}
             </div>
           </div>
         </div>

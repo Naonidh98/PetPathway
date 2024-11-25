@@ -79,7 +79,7 @@ exports.createItem = async (req, res) => {
       thumbnail: response.secure_url,
       category: category._id,
       more_info: moreInfo._id,
-      item_type : type
+      item_type: type,
     });
 
     //add item to category
@@ -273,9 +273,15 @@ exports.deleteItem = async (req, res) => {
 
     await deleteImageFromCloudinary(deletedItem.thumbnail);
 
+    const data = await Category.find({})
+      .sort({ createdAt: -1 })
+      .limit(6)
+      .exec();
+
     return res.status(200).json({
       success: true,
       message: "Item Deleted Successfully",
+      data: data,
     });
   } catch (err) {
     return res.status(500).json({
@@ -376,6 +382,53 @@ exports.getItemForStore = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Failed to fetch item",
+      error: err.message,
+    });
+  }
+};
+
+exports.getItemForAdmin = async (req, res) => {
+  try {
+    const data = await Item.find({}).sort({ created: -1 }).limit(6).exec();
+
+    return res.status(200).json({
+      success: true,
+      message: "data fetched successfully",
+      data: data,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch data.",
+      error: err.message,
+    });
+  }
+};
+
+exports.getItemsByName = async (req, res) => {
+  try {
+    const { name } = req.body;
+
+    if (!name) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing name",
+      });
+    }
+
+    const data = await Item.find({
+      title: { $regex: "^" + name, $options: "i" },
+    }).exec();
+
+    return res.status(200).json({
+      success: true,
+      message: "data fetched successfully",
+      data: data,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch data.",
       error: err.message,
     });
   }

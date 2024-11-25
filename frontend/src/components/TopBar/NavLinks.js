@@ -9,19 +9,19 @@ const NavLinks = [
       id: 3,
       title: "Adopt",
       link: "/adopt",
-      user: "true",
+      user: "user",
     },
     {
       id: 4,
       title: "Store",
       link: "/store",
-      user: "all",
+      user: "user",
     },
     {
       id: 5,
       title: "Blog",
       link: "/blog",
-      user: "true",
+      user: "user",
     },
     {
       id: 6,

@@ -18,10 +18,10 @@ const About = () => {
                       The Tale of Our Achievement Story
                     </h2>
                     <p className="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
-                      Our achievement story is a testament to teamwork and
-                      perseverance. Together, we've overcome challenges,
-                      celebrated victories, and created a narrative of progress
-                      and success.
+                      At Pet Pathway, we started with a simple idea: to make pet
+                      adoption and care as seamless and joyful as possible. From
+                      our humble beginnings, our journey has been fueled by
+                      passion, innovation, and an unwavering love for pets.
                     </p>
                   </div>
                 </div>
@@ -173,15 +173,9 @@ const About = () => {
       {/* quote */}
       <div className=" text-[#AFB2BF] text-center py-16 px-[10%]">
         <p className=" text-4xl font-bold mx-auto  ">
-          We are passionate about revolutionizing the way we learn. Our
-          innovative platform{" "}
-          <span className="text-[#12D8FA]">combines technology</span>,{" "}
-          <span className="text-[#F87424]">expertise</span>, and community to
-          create an{" "}
-          <span className="text-[#F09912]">
-            unparalleled educational experience
-          </span>
-          ."
+          We are passionate about revolutionizing the way we care for pets. Our
+          innovative platform combines technology, expertise, and a vibrant
+          community to create an unparalleled pet adoption and care experience."
         </p>
       </div>
 
@@ -193,19 +187,19 @@ const About = () => {
             Our Founding Story
           </h2>
           <p className="text-lg text-[#999daa] mb-4">
-            Our e-learning platform was born out of a shared vision and passion
-            for transforming education. It all began with a group of educators,
-            technologists, and lifelong learners who recognized the need for
-            accessible, flexible, and high-quality learning opportunities in a
-            rapidly evolving digital world.
+            Pet Pathway was born from a simple yet profound love for animals and
+            a desire to make their lives better. Our founders, lifelong pet
+            lovers, noticed the challenges faced by people in finding the right
+            pet and providing comprehensive care for them. They envisioned a
+            solution that would not only make pet adoption easier but also
+            provide everything a pet owner needs under one roof.
           </p>
           <p className="text-lg text-[#999daa]">
-            As experienced educators ourselves, we witnessed firsthand the
-            limitations and challenges of traditional education systems. We
-            believed that education should not be confined to the walls of a
-            classroom or restricted by geographical boundaries. We envisioned a
-            platform that could bridge these gaps and empower individuals from
-            all walks of life to unlock their full potential.
+            The idea took root when one of our founders adopted a rescue dog and
+            experienced firsthand the difficulties in navigating adoption
+            processes, finding reliable pet care services, and accessing quality
+            pet products. This personal journey fueled the passion to create a
+            platform that could simplify these challenges for others.
           </p>
         </div>
         <div className="lg:w-1/2 ">
@@ -222,12 +216,12 @@ const About = () => {
         <div className="lg:w-1/2 mb-8 ">
           <h2 className="text-3xl font-bold text-[#EF9511] mb-4">Our Vision</h2>
           <p className="text-lg text-[#999daa] mb-4">
-            With this vision in mind, we set out on a journey to create an
-            e-learning platform that would revolutionize the way people learn.
-            Our team of dedicated experts worked tirelessly to develop a robust
-            and intuitive platform that combines cutting-edge technology with
-            engaging content, fostering a dynamic and interactive learning
-            experience.
+            To create a world where every pet finds a loving home, and pet
+            ownership is a joyful and hassle-free experience through innovation,
+            compassion, and community. We aim to be the go-to platform that
+            transforms the way people adopt, care for, and connect with their
+            pets, fostering stronger bonds and happier lives for pets and their
+            families.
           </p>
         </div>
         <div className="lg:w-1/2 mb-8 ">
@@ -235,17 +229,18 @@ const About = () => {
             Our Mission
           </h2>
           <p className="text-lg text-[#999daa]">
-            Our mission goes beyond just delivering courses online. We wanted to
-            create a vibrant community of learners, where individuals can
-            connect, collaborate, and learn from one another. We believe that
-            knowledge thrives in an environment of sharing and dialogue, and we
-            foster this spirit of collaboration through forums, live sessions,
-            and networking opportunities.
+            Our mission is to simplify and enhance the journey of pet ownership
+            by: Connecting Pets with Loving Families: Making pet adoption easy,
+            transparent, and accessible. Providing Comprehensive Care Solutions:
+            Offering a one-stop platform for pet products, grooming, and
+            veterinary services. Empowering Pet Owners: Equipping pet parents
+            with the tools, resources, and community support they need to
+            provide the best care for their furry companions.
           </p>
         </div>
       </div>
 
-      {/* Newsletter */}
+      {/* Newsletter 
       <div className="bg-gradient-to-l from-richblack-600 to-richblack-900 py-16 px-6 font-[sans-serif]">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-5xl font-bold mb-6 text-white">
@@ -267,6 +262,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      */}
     </div>
   );
 };

@@ -47,22 +47,22 @@ const BlogDetail = () => {
   }
 
   return (
-    <>
+    <div className="w-[90%] mx-auto">
       <button
         className="mx-10 mt-5 flex gap-2 items-center hover:text-[#2d42bb]"
         onClick={goBack}
       >
         <IoIosArrowBack /> Back
       </button>
-      <div className=" flex flex-col items-center mx-60 my-10">
+      <div className="items-center w-full my-4">
         {/* blog title  */}
         <div className="mb-4">
-          <h1 className="text-5xl font-bold text-center">{data?.title}</h1>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center">{data?.title}</h1>
         </div>
 
         <div className="mb-10 text-center">
           {/* blog author */}
-          <p className="text-base text-center text-gray-600 text-[#b4b4b4]">
+          <p className="text-sm sm:text-lg text-center text-gray-600 text-[#b4b4b4]">
             Written By <span>{data?.author?.firstName}</span>{" "}
             <span>{data?.author?.lastName}</span>
           </p>
@@ -74,19 +74,19 @@ const BlogDetail = () => {
         {/* blog Image */}
         <div>
           {data.image && (
-            <div className="w-[50rem] h-[30rem] overflow-hidden rounded-lg mb-10">
+            <div className="w-[80%] max-w-[450px] mx-auto overflow-hidden rounded-lg mb-10">
               <img src={data?.image} className="w-full h-full object-cover" />
             </div>
           )}
         </div>
 
         {/* blog Description */}
-        <div className="w-full text-left">
-        <RawHtml.div>{data?.description}</RawHtml.div>
+        <div className="w-full text-left text-sm sm:text-lg">
+          <RawHtml.div>{data?.description}</RawHtml.div>
         </div>
 
         {/* blog buttons  */}
-        <div className="flex items-start justify-end  gap-4 text-xl  w-full">
+        <div className="my-12 flex items-start justify-end  gap-4 text-xl  w-full">
           <button onClick={handleLike} className="flex flex-col items-center ">
             {liked ? (
               <FaHeart className="text-[red] transform transition-transform duration-100 hover:scale-125" />
@@ -106,7 +106,7 @@ const BlogDetail = () => {
         {/* scroll to top button  */}
         {/* <button className="fixed right-10 bottom-10 rounded-full text-2xl p-3 bg-black z-[1000]" onClick={handleScrollToTop}><IoIosArrowUp /></button> */}
       </div>
-    </>
+    </div>
   );
 };
 

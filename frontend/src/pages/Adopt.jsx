@@ -60,21 +60,21 @@ const Adopt = () => {
   }
 
   return (
-    <div className="max-w-[1440px] mx-auto">
+    <div className="w-[98%] max-w-[1440px] mx-auto">
       {/* Banner */}
-      <div className="py-[25px] text-2xl sm:text-3xl font-poppins font-bold">
-        <h1>
+      <div className="py-[25px] font-poppins font-bold">
+        <h1 className="text-2xl sm:text-3xl">
           {`Hi ${user.firstName}`} <span className="">👋</span>
         </h1>
       </div>
-      <div className="flex justify-between mb-4">
+      <div className="flex items-center justify-between  flex-wrap mb-4">
         <h2>Location : {state}</h2>
         <button
           onClick={() => {
             dispatch(setLoaction(null));
             localStorage.setItem("state", null);
           }}
-          className="py-2"
+          className="p-2 rounded bg-blue-300 text-white my-4 mx-auto sm:mx-0"
         >
           Change Location
         </button>

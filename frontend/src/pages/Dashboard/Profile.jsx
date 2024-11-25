@@ -98,10 +98,7 @@ const Profile = () => {
                 </p>
               </div>
               <div>
-                <p className="mb-2 text-sm text-richblack-100">Gender</p>
-                <p className="text-sm font-medium text-richblack-5">
-                  {user?.profileId?.gender ?? "NA"}
-                </p>
+                
               </div>
             </div>
 

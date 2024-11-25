@@ -5,7 +5,7 @@ import { Navigation, Pagination, Scrollbar, Autoplay } from "swiper/modules";
 
 const Banner = ({data}) => {
   return (
-    <div>
+    <div className="hidden lg:flex">
       <Swiper
         modules={[Pagination, Navigation, Autoplay]}
         autoplay={true}

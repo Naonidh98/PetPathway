@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 //import controllers
-const {createItem,updateItem,deleteItem,getItem,getItemForStore} = require("../controllers/Item");
-
+const {createItem,updateItem,deleteItem,getItem,getItemForStore,getItemForAdmin,getItemsByName} = require("../controllers/Item");
+const {auth,isAdmin} = require("../middlewares/AuthMiddleware")
 
 //create
 router.post("/create",createItem);
@@ -15,9 +15,15 @@ router.put("/edit",updateItem);
 router.delete("/delete",deleteItem);
 
 //fetch details of a item
-router.get("/details",getItem);
+router.post("/detail",auth,getItem);
 
 //
-router.get("/store",getItemForStore)
+router.get("/store",getItemForStore);
+
+//items for admin dash
+router.get("/dash",auth,isAdmin,getItemForAdmin);
+
+//item bt name
+router.post("/search/name",auth,isAdmin,getItemsByName);
 
 module.exports = router;

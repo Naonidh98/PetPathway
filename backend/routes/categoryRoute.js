@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 //import controllers
-const {createCategory,editCategory,deleteCategory,getCategories,getCategoryItems,getCategoriesName} = require("../controllers/Category")
+const {createCategory,editCategory,deleteCategory,getCategoryByName,getCategories,getCategoryItems,getCategoriesName} = require("../controllers/Category")
 const {auth,isAdmin}  = require("../middlewares/AuthMiddleware")
 
 //create
@@ -16,8 +16,11 @@ router.delete("/delete",auth,isAdmin,deleteCategory);
 
 //fetch all categories
 router.get("/all",getCategories);
-router.get("/item/all",getCategoryItems);
+router.post("/item/all",getCategoryItems);
 router.get("/all/name",getCategoriesName);
+
+//categiry by name
+router.post("/name",auth,getCategoryByName);
 
 
 module.exports = router;

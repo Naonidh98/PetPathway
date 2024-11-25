@@ -5,14 +5,16 @@ import profileSlice from "../slices/profileSlice";
 import userSlice from "../slices/userSlice";
 import blogSlice from "../slices/blogSlice";
 import petFormSlice from "../slices/petFormSlice";
-import locationSLice from "../slices/locationSlice"
+import locationSLice from "../slices/locationSlice";
+import cartSlice from "../slices/cartSlice";
 
 const rootReducer = combineReducers({
     profile : profileSlice,
     user : userSlice,
     blog : blogSlice,
     petForm : petFormSlice,
-    location : locationSLice
+    location : locationSLice,
+    cart : cartSlice
 })
 
 export default rootReducer;

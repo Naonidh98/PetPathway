@@ -104,9 +104,23 @@ exports.deleteCategory = async (req, res) => {
 
     await deleteImageFromCloudinary(category?.thumbnail);
 
+    const data = await Category.find(
+      {},
+      {
+        title: true,
+        thumbnail: true,
+        createdAt: true,
+        updatedAt: true,
+      }
+    )
+      .sort({ createdAt: -1 })
+      .limit(5)
+      .exec();
+
     return res.status(200).json({
       success: true,
       message: "Category deleted successfully",
+      data: data,
     });
   } catch (err) {
     return res.status(500).json({
@@ -132,13 +146,14 @@ exports.getCategoryItems = async (req, res) => {
     const category = await Category.find({ _id: categoryId })
       .populate({
         path: "items",
+        select : "title price thumbnail"
       })
       .exec();
 
     return res.status(200).json({
       success: true,
       message: "data fetched successfully",
-      data: category?.item,
+      data: category
     });
   } catch (err) {
     return res.status(500).json({
@@ -171,9 +186,12 @@ exports.getCategories = async (req, res) => {
 //get categories name
 exports.getCategoriesName = async (req, res) => {
   try {
-    const data = await Category.find({},{
-      title : true
-    });
+    const data = await Category.find(
+      {},
+      {
+        title: true,
+      }
+    );
 
     return res.status(200).json({
       success: true,
@@ -184,6 +202,35 @@ exports.getCategoriesName = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Failed to fetch Category.",
+      error: err.message,
+    });
+  }
+};
+
+exports.getCategoryByName = async (req, res) => {
+  try {
+    const { name } = req.body;
+
+    if (!name) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing name",
+      });
+    }
+
+    const data = await Category.find({
+      title: { $regex: "^" + name, $options: "i" },
+    }).exec();
+
+    return res.status(200).json({
+      success: true,
+      message: "data fetched successfully",
+      data: data,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch data.",
       error: err.message,
     });
   }

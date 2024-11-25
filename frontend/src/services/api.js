@@ -31,12 +31,22 @@ export const categoryApi = {
   delete_category: BASE_URL + "/category/delete",
   create_item: BASE_URL + "/item/create",
   get_category_name: BASE_URL + "/category/all/name",
+  get_cat_info_by_name : BASE_URL + "/category/name",
+  category_items : BASE_URL + "/category/item/all"
+};
+
+export const itemApi = {
+  item_detail : BASE_URL + "/item/detail",
+  item_by_name : BASE_URL + "/item/search/name",
+  item_for_dash : BASE_URL + "/item/dash",
+  delete_item : BASE_URL + "/item/delete"
 };
 
 export const storeApi = {
   getStoreDetails: BASE_URL + "/store/data",
   getStoreAnalytics: BASE_URL + "/store/details",
-  getCategoryAndItems : BASE_URL + "/store/item_and_cat"
+  getCategoryAndItems : BASE_URL + "/store/item_and_cat",
+  getSearchResult : BASE_URL + "/store/search/result",
 };
 
 export const adoptApi = {
@@ -46,3 +56,8 @@ export const adoptApi = {
   petAdoptDetails : BASE_URL + "/pet/state/all",
   petDetail : BASE_URL + "/pet/detail"
 };
+
+export const paymentApi = {
+  capture_payment : BASE_URL + "/payment/capturePayment",
+  verify_payment : BASE_URL + "/payment/verifyPayment",
+}

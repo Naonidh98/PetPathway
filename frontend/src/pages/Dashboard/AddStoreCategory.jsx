@@ -7,8 +7,10 @@ import { IoMdAdd } from "react-icons/io";
 import { getCatDash } from "../../services/operations/store";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingTwo from "../../components/Spinner/LoadingTwo";
+import { getCatByName, deleteCategory } from "../../services/operations/store";
 
-const CatCard = ({ data, index }) => {
+const CatCard = ({ data, index, setLoading, setData, token }) => {
+  const dispatch = useDispatch();
   return (
     <div
       key={index}
@@ -29,20 +31,33 @@ const CatCard = ({ data, index }) => {
       <div>
         <p>
           <span className="font-semibold">Created : </span>{" "}
-          {data?.createdAt}
+          {data?.createdAt.split("T")[0]}
         </p>
         <p>
-          <span className="font-semibold">Updated : </span>
-          
+          <span className="font-semibold">
+            Updated : {data?.updatedAt.split("T")[0]}
+          </span>
         </p>
       </div>
 
       <div className="flex gap-6 items-center">
-        <button>View</button>
         <button>
           <MdEdit />
         </button>
-        <button>
+        <button
+          onClick={() => {
+            dispatch(
+              deleteCategory(
+                {
+                  categoryId: data._id,
+                },
+                setLoading,
+                setData,
+                token
+              )
+            );
+          }}
+        >
           <IoTrashBinSharp />
         </button>
       </div>
@@ -52,6 +67,7 @@ const CatCard = ({ data, index }) => {
 
 const AddStoreCategory = () => {
   const [showForm, setShowForm] = useState(false);
+  const [query, setQuery] = useState("");
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
@@ -112,9 +128,27 @@ const AddStoreCategory = () => {
                 <input
                   className="w-[90%] rounded-l font-roboto p-2 font-xl outline-none text-black"
                   type="text"
+                  onChange={(e) => {
+                    setQuery(e.target.value);
+                  }}
                   placeholder="Search a Category.."
                 />
-                <button className="w-[10%] text-center bg-blue-200 font-bold rounded-r">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    dispatch(
+                      getCatByName(
+                        {
+                          name: query,
+                        },
+                        setLoading,
+                        setData,
+                        token
+                      )
+                    );
+                  }}
+                  className="w-[10%] text-center bg-blue-200 font-bold rounded-r"
+                >
                   Enter
                 </button>
               </div>
@@ -125,7 +159,13 @@ const AddStoreCategory = () => {
               {data && (
                 <div>
                   {data?.map((cat, index) => (
-                    <CatCard index={index} data={cat} />
+                    <CatCard
+                      index={index}
+                      token={token}
+                      setLoading={setLoading}
+                      data={cat}
+                      setData={setData}
+                    />
                   ))}
                 </div>
               )}

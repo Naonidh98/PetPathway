@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import { topCategoriesData } from "../components/Store/data";
 import { useDispatch } from "react-redux";
 import { getCategory } from "../services/operations/store";
+import { useNavigate } from "react-router-dom";
+
 const ItemCategories = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   async function getCategoryData() {
     setLoading(true);
@@ -34,11 +37,12 @@ const ItemCategories = () => {
       </h2>
 
       <div className="w-full max-w-[1440px] mx-auto py-[15px]">
-        <div className="my-4 flex flex-wrap justify-between gap-y-[55px]">
+        <div className="my-4 flex flex-wrap justify-evenly gap-y-[55px]">
           {data.map((item, index) => (
             <div
               className="hover:scale-95 transition-all cursor-pointer flex flex-col gap-y-4 bg-richblack-800 rounded-md overflow-hidden"
               key={index}
+              onClick={()=>{navigate(`/category/${item?._id}`)}}
             >
               <Img
                 src={item.thumbnail}
