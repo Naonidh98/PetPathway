@@ -91,7 +91,7 @@ const Adopt = () => {
         ) : (
           <div>
             {data && data.length > 0 && (
-              <div className="flex gap-[35px] flex-wrap">
+              <div className="flex gap-[35px] flex-wrap justify-evenly">
                 {data.map((pet, index) => (
                   <PetCard data={pet} index={index} />
                 ))}

@@ -16,7 +16,7 @@ const MyBlogCard = ({ data, key, setMyBlogs, setLoading }) => {
   return (
     <div key={key}>
       {/* section Blog Card */}
-      <div className="my-[25px] flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-3 md:p-8 md:px-12">
+      <div className="my-[25px] flex items-center justify-between flex-wrap gap-2 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-3 md:p-8 md:px-12">
         <p
           className="cursor-pointer"
           onClick={() => {

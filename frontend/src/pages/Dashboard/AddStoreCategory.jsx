@@ -14,7 +14,7 @@ const CatCard = ({ data, index, setLoading, setData, token }) => {
   return (
     <div
       key={index}
-      className="flex items-center justify-between p-2 rounded my-4 bg-richblack-800"
+      className="flex items-center flex-wrap gap-2 justify-between p-2 rounded my-4 bg-richblack-800"
     >
       <img
         src={data?.thumbnail}
@@ -35,15 +35,13 @@ const CatCard = ({ data, index, setLoading, setData, token }) => {
         </p>
         <p>
           <span className="font-semibold">
-            Updated : {data?.updatedAt.split("T")[0]}
+            {/* Updated : {data?.updatedAt.split("T")[0]} */}
           </span>
         </p>
       </div>
 
       <div className="flex gap-6 items-center">
-        <button>
-          <MdEdit />
-        </button>
+        
         <button
           onClick={() => {
             dispatch(
@@ -87,8 +85,8 @@ const AddStoreCategory = () => {
 
   return (
     <div className="mx-auto w-11/12 max-w-[1000px] font-poppins">
-      <div className="flex justify-between">
-        <h1 className="mb-14 text-3xl font-medium text-richblack-5">
+      <div className="flex justify-between flex-wrap">
+        <h1 className="mb-14 text-xl md:text-3xl font-medium text-richblack-5">
           Store Category 🛍️
         </h1>
         <div>
@@ -97,7 +95,7 @@ const AddStoreCategory = () => {
               onClick={() => {
                 setShowForm(true);
               }}
-              className="hover:scale-95 flex items-center gap-4 transition-transform px-4 py-2 bg-blue-200 text-white font-poppins rounded"
+              className="hover:scale-95 mx-auto flex items-center gap-4 transition-transform px-4 py-2 bg-blue-200 text-white font-poppins rounded"
             >
               <IoMdAdd />
               Add Category

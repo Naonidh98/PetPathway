@@ -13,7 +13,7 @@ const ItemCard = ({ data, index, setLoading, setData, token }) => {
   return (
     <div
       key={index}
-      className="flex items-center justify-between p-2 rounded my-4 bg-richblack-800"
+      className="flex flex-wrap gap-2 items-center justify-between p-2 rounded my-4 bg-richblack-800"
     >
       <img
         src={data?.thumbnail}
@@ -39,9 +39,7 @@ const ItemCard = ({ data, index, setLoading, setData, token }) => {
       </div>
 
       <div className="flex gap-6 items-center">
-        <button>
-          <MdEdit />
-        </button>
+        
         <button
           onClick={() => {
             dispatch(
@@ -85,7 +83,7 @@ const AddStoreItems = () => {
 
   return (
     <div className="mx-auto w-11/12 max-w-[1000px] font-poppins">
-      <div className="flex justify-between">
+      <div className="flex justify-between flex-wrap">
         <h1 className="mb-14 text-3xl font-medium text-richblack-5">
           Store Items 🛍️
         </h1>

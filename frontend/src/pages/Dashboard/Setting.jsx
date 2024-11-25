@@ -238,11 +238,12 @@ const Setting = () => {
           </form>
         </div>
 
-        {/* section 4 */}
+        {/* section 4 
         <div className="my-10 flex items-center justify-between gap-y-10 rounded-md border-[1px] border-richblack-700 bg-pink-600 p-3 md:p-8 md:px-12">
           <p>Delete Account</p>
           <IoTrashBin className="text-xl cursor-pointer" />
         </div>
+        */}
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import { paymentApi } from "../api";
 import { resetCart } from "../../slices/cartSlice";
 import { apiConnector } from "../apiConnector";
 
-
 function loadScript(src) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
@@ -38,6 +37,11 @@ export async function buyItems(
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
+
+    totalAmount = Math.round(totalAmount * 100) / 100;
+    console.log(totalAmount);
+    
+
     if (!res) {
       toast.error("Razorpay SDK failed to load. Are you online?");
       return;
@@ -72,7 +76,7 @@ export async function buyItems(
       handler: async function (response) {
         console.log("buyCourse -> response", response);
         //sendPaymentSuccessEmail(response, orderResponse.data.amount, token);
-        verifypament(response, data,token, navigate, dispatch);
+        verifypament(response, data, token, navigate, dispatch);
       },
       theme: {
         color: "#686CFD",
@@ -91,10 +95,9 @@ export async function buyItems(
   }
 }
 
-async function verifypament(response, data ,token, navigate, dispatch) {
+async function verifypament(response, data, token, navigate, dispatch) {
   const toastId = toast.loading("Please wait while we verify your payment");
   try {
-    
     const res = await apiConnector(
       "POST",
       paymentApi.verify_payment,

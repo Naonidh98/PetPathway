@@ -17,7 +17,6 @@ const ProductCard = ({ data, index, setTotal, total }) => {
   const [quantity, setQuantity] = useState(data.quantity || 1);
   const dispatch = useDispatch();
 
-
   return (
     <div key={index}>
       <div class="grid grid-cols-3 items-start gap-4 bg-richblack-800 p-2 rounded">
@@ -44,7 +43,8 @@ const ProductCard = ({ data, index, setTotal, total }) => {
 
         <div class="ml-auto">
           <h4 class="text-lg max-sm:text-base font-bold text-gray-800">
-            Rs. <span>{data.price * data.quantity}</span>
+            Rs.{" "}
+            <span>{Math.round(data.price * data.quantity * 100) / 100}</span>
           </h4>
 
           <button
@@ -54,7 +54,7 @@ const ProductCard = ({ data, index, setTotal, total }) => {
             <button>
               <FaMinus
                 onClick={() => {
-                  if (quantity === -1) {
+                  if (quantity === 1) {
                     return;
                   }
 
@@ -74,6 +74,10 @@ const ProductCard = ({ data, index, setTotal, total }) => {
 
             <button
               onClick={() => {
+                if (quantity === 5) {
+                  return;
+                }
+
                 const cartData = {
                   id: data.id,
                   image: data.image,
@@ -101,12 +105,12 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [subtotal, setTotal] = useState(0);
+  const [subtotal, setTotal] = useState(100);
   const ship = 50;
   const tax = 50;
 
   const { cart } = useSelector((state) => state.cart);
-  const { token ,user} = useSelector((state) => state.user);
+  const { token, user } = useSelector((state) => state.user);
 
   useEffect(() => {
     let total = 0;
@@ -119,7 +123,7 @@ const Cart = () => {
   if (cart.length === 0) {
     return (
       <div className="text-center w-screen h-screen flex items-center justify-center">
-        No Items in cart | Shop to add
+        No items in the cart.
       </div>
     );
   }
@@ -154,12 +158,13 @@ const Cart = () => {
                   Enter Details
                 </h3>
                 <div class="space-y-3 text-black">
-                  
                   <div class="relative flex items-center">
                     <input
                       type="text"
                       placeholder="House Address"
-                      onChange={(e)=>{setAdress(e.target.value)}}
+                      onChange={(e) => {
+                        setAdress(e.target.value);
+                      }}
                       class="px-4 py-2.5 bg-white text-gray-800 rounded-md w-full text-sm border-b focus:border-gray-800 outline-none"
                     />
                     <svg
@@ -195,27 +200,24 @@ const Cart = () => {
                       </g>
                     </svg>
                   </div>
-
-                  
                 </div>
               </div>
             </form>
 
             <ul class="text-gray-800 mt-6 space-y-3">
               <li class="flex flex-wrap gap-4 text-sm">
-                Subtotal{" "}
-                <span class="ml-auto font-bold">Rs. {subtotal}.00</span>
+                Subtotal <span class="ml-auto font-bold">Rs. {Math.round(subtotal * 100) / 100}</span>
               </li>
               <li class="flex flex-wrap gap-4 text-sm">
-                Shipping <span class="ml-auto font-bold">Rs. {ship}.00</span>
+                Shipping <span class="ml-auto font-bold">Rs. {ship}</span>
               </li>
               <li class="flex flex-wrap gap-4 text-sm">
-                Tax <span class="ml-auto font-bold">Rs. {tax}.00</span>
+                Tax <span class="ml-auto font-bold">Rs. {tax}</span>
               </li>
               <hr class="border-gray-300" />
               <li class="flex flex-wrap gap-4 text-sm font-bold">
                 Total{" "}
-                <span class="ml-auto">Rs. {subtotal + ship + tax}.00</span>
+                <span class="ml-auto">Rs. {Math.round((subtotal+100) * 100) / 100}</span>
               </li>
             </ul>
 
@@ -224,13 +226,21 @@ const Cart = () => {
                 type="button"
                 onClick={() => {
                   console.log(cart);
-                  dispatch(buyItems(token,cart,subtotal,user,navigate,dispatch))
+                  dispatch(
+                    buyItems(
+                      token,
+                      cart,
+                      subtotal + 100,
+                      user,
+                      navigate,
+                      dispatch
+                    )
+                  );
                 }}
                 class="bg-yellow-50 text-black font-bold font-poppins text-sm px-4 py-2.5 w-full tracking-wide bg-gray-800 hover:bg-gray-900 rounded-md"
               >
                 Checkout
               </button>
-              
             </div>
           </div>
         </div>

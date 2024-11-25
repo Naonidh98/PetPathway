@@ -179,6 +179,41 @@ const TopBar = () => {
           className="py-2 text-xl w-[98%] max-w-[1440px] bg-transparent outline-none border-none text-black font-roboto"
         />
       </div>
+
+      {/* Navlink - for -  phone*/}
+      <div
+        className={`shadow-lg flex flex-col shadow-richblack-700 absolute ${
+          showMenu ? "top-[80px]" : "top-[-350px]"
+        } transition-all left-0 flex justify-center w-full z-50`}
+      >
+        {NavLinks.map(
+          (item, index) =>
+            (item.user === "all" || (user && item.user === user.type)) && (
+              <div>
+                <button
+                key={index}
+                onClick={() => {
+                  setShowMenu(!showMenu);
+                  navigate(`${item.link}`);
+                }}
+                className="bg-pink-600 w-full py-2"
+              >
+                {item.title}
+              </button>
+              <hr className="bg-white"/>
+              </div>
+            )
+        )}
+        <button
+          onClick={() => {
+            setShowMenu(!showMenu);
+            navigate("/dashboard/my-profile");
+          }}
+          className="bg-pink-600 w-full p-1"
+        >
+          Dashboard
+        </button>
+      </div>
     </div>
   );
 };

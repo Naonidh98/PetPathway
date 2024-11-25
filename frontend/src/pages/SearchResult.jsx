@@ -5,6 +5,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import LoadingTwo from "../components/Spinner/LoadingTwo";
 import { useSelector, useDispatch } from "react-redux";
 import { getSearchResultData } from "../services/operations/store";
+import ItemCard from "../components/Store/ItemCard";
 
 const PetCard = ({ index, data }) => {
   const navigate = useNavigate();
@@ -52,6 +53,7 @@ const PetCard = ({ index, data }) => {
     </div>
   );
 };
+/*
 const ItemCard = ({ index, data }) => {
   const navigate = useNavigate();
 
@@ -94,7 +96,7 @@ const ItemCard = ({ index, data }) => {
       </div>
     </div>
   );
-};
+};*/
 
 const SearchResult = () => {
   const params = useParams();

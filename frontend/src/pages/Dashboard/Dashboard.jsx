@@ -43,7 +43,7 @@ const Dashboard = () => {
         <div
           className={`${
             openBar ? "" : "hidden"
-          } transition-all bg-blue-500 p-2 w-[100%] mx-auto border-b-2 flex items-center justify-between flex-wrap gap-4`}
+          } transition-all bg-blue-500 z-50 p-2 w-[100%] mx-auto border-b-2 flex items-center justify-between flex-wrap gap-4`}
         >
           {SideBarLinks.map((data, index) => {
             if (data.type === user.type || data.type === "all") {

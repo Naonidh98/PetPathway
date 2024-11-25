@@ -203,7 +203,7 @@ exports.deleteBlog = async (req, res) => {
 
     await Blog.findByIdAndDelete({ _id: blogId });
 
-    const newBlogs = await Blog.find({}).sort("-createdAt").limit(15).exec();
+    const newBlogs = await Blog.find({author : userId}).sort({createdAt : -1}).exec();
 
     return res.status(200).json({
       success: true,

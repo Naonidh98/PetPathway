@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import NoImg from "../../assets/NoImg.jpg"
+import NoImg from "../../assets/NoImg.jpg";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../slices/cartSlice";
+import { removeFromCart } from "../../slices/cartSlice";
 
-const ItemCard = ({ data ,index }) => {
-  const navigate  = useNavigate();
+const ItemCard = ({ data, index }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const [inCart, setInCart] = useState(false);
+
+  const { cart } = useSelector((state) => state.cart);
+  console.log(cart);
+
+  useEffect(() => {
+    cart?.map((item) => {
+      if (item.id === data._id) {
+        setInCart(true);
+      }
+    });
+  }, [cart]);
 
   return (
     <div
@@ -38,27 +52,47 @@ const ItemCard = ({ data ,index }) => {
           </p>
         </div>
 
-        <div className="text-right py-2 text-blue-600 cursor-pointer" onClick={()=>{
-          navigate(`/store/${data?._id}`)
-        }}>
+        <div
+          className="text-right py-2 text-blue-600 cursor-pointer"
+          onClick={() => {
+            navigate(`/store/${data?._id}`);
+          }}
+        >
           more details
         </div>
 
-        <button
-          onClick={() => {
-            const cartData  = {
-              id : data._id,
-              image : data.thumbnail,
-              title : data.title,
-              price : data.price,
-              quantity : 1
-            }
-           dispatch(addToCart(cartData));
-          }}
-          className="w-full hover:scale-90 transition-transform flex items-center justify-center gap-2 bg-blue-300 text-white rounded p-4"
-        >
-          Add to Cart
-        </button>
+        <div>
+          {!inCart && (
+            <button
+              onClick={() => {
+                const cartData = {
+                  id: data._id,
+                  image: data.thumbnail,
+                  title: data.title,
+                  price: data.price,
+                  quantity: 1,
+                };
+                dispatch(addToCart(cartData));
+              }}
+              className="w-full hover:scale-90 transition-transform flex items-center justify-center gap-2 bg-blue-300 text-white rounded p-4"
+            >
+              Add to Cart
+            </button>
+          )}
+        </div>
+        <div>
+          {inCart && (
+            <button
+              onClick={() => {
+                dispatch(removeFromCart(data._id));
+                setInCart(false);
+              }}
+              className="w-full hover:scale-90 transition-transform flex items-center justify-center gap-2 bg-[#780000] text-white rounded p-4"
+            >
+              Remove from cart
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
