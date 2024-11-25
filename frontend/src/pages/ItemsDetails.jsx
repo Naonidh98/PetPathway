@@ -69,7 +69,13 @@ const ItemsDetails = () => {
 
             <hr className="mt-4" />
 
-            <ItemInformation item={data?.more_info} />
+            <div>
+              {data?.more_info && (
+                <div>
+                  <ItemInformation item={data?.more_info} />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
